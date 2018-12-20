@@ -3,16 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-Update pending
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Soy ingeniero con mucho interes en investigar y aplicar la matematica, la estadistica y los algoritmos para la solucion de problemas. Mis 
+intereses estan en el ambito de data science, machine learning y deep learning. Como segundo interes, investigo y me involucro constantemente
+en topicos relacionados a software development.  
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
