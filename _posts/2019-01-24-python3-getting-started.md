@@ -7,7 +7,6 @@ tags: [python, introduction]
 ---
 
 
-
 This is a brief introduction to Python 3, a scripting language widely used in data science. 
 
 ### Basic Operations
@@ -177,7 +176,7 @@ len(word)
 
 
 ### Lists
-Lists might contain items of different types, but usually the items all have the same type.
+Lists might contain items of different types, but usually the items all have the same type. Lists are mutable sequences. 
 
 
 ```python
@@ -260,18 +259,6 @@ len(letters)
 
 
 
-### Print
-
-
-```python
-# Print supports multiparameters
-pi = 3.1416
-print('The value of pi is:', pi)
-```
-
-    The value of pi is: 3.1416
-    
-
 ### IF Statements
 
 
@@ -310,7 +297,17 @@ for w in words:
     Pascal -> 6
     
 
+### pass Statements
+"The pass statement does nothing. It can be used when a statement is required syntactically but the program requires no action"
+
+
+```python
+for i in [1,2,3]:
+    pass  # Does nothing
+```
+
 ### The range() Function
+The range type represents an immutable sequence of numbers and is commonly used for looping a specific number of times in for loops.
 
 
 ```python
@@ -366,6 +363,372 @@ list(r)
     [0, 3, 6, 9]
 
 
+
+### Functions
+
+
+```python
+# The keyword def introduces a function definition.
+def square(n): # Calculates the square of a number n
+    return n ** 2
+```
+
+
+```python
+# Calling our square function
+square(3)
+```
+
+
+
+
+    9
+
+
+
+
+```python
+# Assigning the function to a variable and calling that
+sq = square
+sq(4)
+```
+
+
+
+
+    16
+
+
+
+
+```python
+# Default argument value
+def repeatPrint(message, times=5, finalMsg='Bye'):
+    i = 1
+    while i <= times:
+        i += 1
+        print(message)
+    print(finalMsg)
+
+    
+```
+
+
+```python
+# Calling the function with all arguments
+repeatPrint('Hello', 2, 'Good bye')
+```
+
+    Hello
+    Hello
+    Good bye
+    
+
+
+```python
+# Calling the function without optinal argument
+repeatPrint('Hello')
+```
+
+    Hello
+    Hello
+    Hello
+    Hello
+    Hello
+    Bye
+    
+
+
+```python
+# Using keyword Arguments
+repeatPrint(times=3, message='Hi', finalMsg='HoHoHo')
+```
+
+    Hi
+    Hi
+    Hi
+    HoHoHo
+    
+
+
+```python
+# Keywords and arguments
+def cheeseshop(kind, *arguments, **keywords):
+    print("-- Do you have any", kind, "?")
+    print("-- I'm sorry, we're all out of", kind)
+    for arg in arguments:
+        print(arg)
+    print("-" * 40)
+    for kw in keywords:
+        print(kw, ":", keywords[kw])
+# 
+# Calling the defined function
+cheeseshop("Limburger", "It's very runny, sir.",
+           "It's really very, VERY runny, sir.",
+           shopkeeper="Michael Palin",
+           client="John Cleese",
+           sketch="Cheese Shop Sketch")
+```
+
+    -- Do you have any Limburger ?
+    -- I'm sorry, we're all out of Limburger
+    It's very runny, sir.
+    It's really very, VERY runny, sir.
+    ----------------------------------------
+    shopkeeper : Michael Palin
+    client : John Cleese
+    sketch : Cheese Shop Sketch
+    
+
+
+```python
+# Unpacking Argument Lists
+list(range(3, 6))  # normal call with separate arguments
+args = [3, 6]      # List 
+list(range(*args))  # call with arguments unpacked from a list
+```
+
+
+
+
+    [3, 4, 5]
+
+
+
+
+```python
+# Documentation of Functions
+def myFunction():
+    """Do nothing, but document it.
+    
+    No, really, it doesn't do anything.
+        """
+    pass
+#
+print(myFunction.__doc__)
+
+```
+
+    Do nothing, but document it.
+        
+        No, really, it doesn't do anything.
+            
+    
+
+### Tuples
+"Tuples are immutable sequences, typically used to store collections of heterogeneous data". "A tuple consists of a number of values separated by commas"
+
+
+```python
+# Defining a tuple with heterogenous data
+t = 12345, 54321, 'hello!'
+t[0]  # 12345
+t
+```
+
+
+
+
+    (12345, 54321, 'hello!')
+
+
+
+
+```python
+# Tuples may be nested:
+u = t, (1, 2, 3, 4, 5)
+u
+# Tuples are immutable:
+# t[0] = 88888 # yields error
+```
+
+
+
+
+    ((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+
+
+
+
+```python
+# Tuples enclosed in parentheses
+customer = (1234, 'Texas', 'Male')
+customer
+```
+
+
+
+
+    (1234, 'Texas', 'Male')
+
+
+
+### Sets
+"Python also includes a data type for sets. A set is an unordered collection with no duplicate elements. Basic uses include membership testing and eliminating duplicate entries"
+
+
+```python
+# Duplicates are removed
+countries = {'Peru', 'Mexico', 'Chile', 'Peru', 'Canada', 'Chile'}
+countries
+```
+
+
+
+
+    {'Canada', 'Chile', 'Mexico', 'Peru'}
+
+
+
+
+```python
+# Membershing validation
+'Peru' in countries
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# set() can be used to create sets
+set_let = set('tennessee')
+set_let
+```
+
+
+
+
+    {'e', 'n', 's', 't'}
+
+
+
+### Dictionaries
+"It is best to think of a dictionary as a set of key: value pairs, with the requirement that the keys are unique (within one dictionary)"
+
+
+```python
+# Defining a dictionary
+tel = {'jack': 4098, 'sape': 4139}
+tel['guido'] = 4127
+tel
+```
+
+
+
+
+    {'jack': 4098, 'sape': 4139, 'guido': 4127}
+
+
+
+
+```python
+# Accesing a value
+tel['jack']
+```
+
+
+
+
+    4098
+
+
+
+
+```python
+# Delete a key-value
+del tel['sape']
+tel
+```
+
+
+
+
+    {'jack': 4098, 'guido': 4127}
+
+
+
+
+```python
+## Adding a key-value
+tel['irv'] = 4127
+tel
+```
+
+
+
+
+    {'jack': 4098, 'guido': 4127, 'irv': 4127}
+
+
+
+
+```python
+# List the keys
+list(tel)
+```
+
+
+
+
+    ['jack', 'guido', 'irv']
+
+
+
+
+```python
+# Sort the list of keys
+sorted(tel)
+```
+
+
+
+
+    ['guido', 'irv', 'jack']
+
+
+
+
+```python
+# Validate the existance of a key
+'guido' in tel
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# Construct a dictionary from key-pair value
+dict(sape=4139, guido=4127, jack=4098)
+```
+
+
+
+
+    {'sape': 4139, 'guido': 4127, 'jack': 4098}
+
+
+
+### Common Utils
+
+
+```python
+# Print supports multiparameters
+pi = 3.1416
+print('The value of pi is:', pi)
+```
+
+    The value of pi is: 3.1416
+    
 
 ### References:
 https://docs.python.org/3/tutorial/
