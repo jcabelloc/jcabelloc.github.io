@@ -7,6 +7,7 @@ tags: [python, introduction]
 ---
 
 
+
 This is a brief introduction to Python 3, a scripting language widely used in data science. 
 
 ### Basic Operations
@@ -89,6 +90,73 @@ h
 
 
     5.0
+
+
+
+### Comparison Operators
+
+
+```python
+# Comparison
+1 > 5
+```
+
+
+
+
+    False
+
+
+
+
+```python
+# Comparison
+1 < 8
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# Comparison
+1 <= 1
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# Comparison
+8 == 8
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# Comparison
+'by' == 'goodbye'
+```
+
+
+
+
+    False
 
 
 
@@ -259,6 +327,20 @@ len(letters)
 
 
 
+
+```python
+# List from a String
+letters = list('PYTHON')
+letters
+```
+
+
+
+
+    ['P', 'Y', 'T', 'H', 'O', 'N']
+
+
+
 ### IF Statements
 
 
@@ -295,6 +377,21 @@ for w in words:
     Python -> 6
     Java -> 4
     Pascal -> 6
+    
+
+### While Statement
+
+
+```python
+i = 1
+while i <= 3 :
+    print('i is: {}'.format(i))
+    i = i + 1
+```
+
+    i is: 1
+    i is: 2
+    i is: 3
     
 
 ### pass Statements
@@ -515,6 +612,26 @@ print(myFunction.__doc__)
             
     
 
+### Lambda Expressions
+
+
+```python
+# Define the lambda expression
+def any_exp(n):
+    return lambda x: x**n
+
+# Call the lambda expression
+cubic = any_exp(3)
+cubic(4)
+```
+
+
+
+
+    64
+
+
+
 ### Tuples
 "Tuples are immutable sequences, typically used to store collections of heterogeneous data". "A tuple consists of a number of values separated by commas"
 
@@ -539,7 +656,7 @@ t
 u = t, (1, 2, 3, 4, 5)
 u
 # Tuples are immutable:
-# t[0] = 88888 # yields error
+# t[0] = 100 # yields error
 ```
 
 
@@ -729,6 +846,31 @@ print('The value of pi is:', pi)
 
     The value of pi is: 3.1416
     
+
+
+```python
+# Print with format
+num = '123';
+name = 'Jhon'
+print('My number is: {a}, and my name is: {b}'.format(a=num,b=name))
+```
+
+    My number is: 123, and my name is: Jhon
+    
+
+
+```python
+# Type of an object
+l = list('UTIL');
+type(l)
+```
+
+
+
+
+    list
+
+
 
 ### References:
 https://docs.python.org/3/tutorial/
