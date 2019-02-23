@@ -2,10 +2,9 @@
 layout: post
 title:  "Getting Started with Python 3"
 date:   2019-01-24 22:20:34 -0500
-categories: [Data science]
+categories: [Python]
 tags: [python, introduction]
 ---
-
 
 
 This is a brief introduction to Python 3, a scripting language widely used in data science. 
@@ -377,6 +376,19 @@ for w in words:
     Python -> 6
     Java -> 4
     Pascal -> 6
+    
+
+
+```python
+for i in range(5):
+    print(i**2)
+```
+
+    0
+    1
+    4
+    9
+    16
     
 
 ### While Statement
@@ -871,6 +883,19 @@ type(l)
     list
 
 
+
+
+```python
+# Help/Documentation
+len?
+```
+
+
+```python
+# Set a O.S. directory path
+import os
+datapath = os.path.join("datasets", "islr", "")
+```
 
 ### References:
 https://docs.python.org/3/tutorial/

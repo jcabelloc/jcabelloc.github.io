@@ -2,7 +2,7 @@
 layout: post
 title:  "Getting Started with octave"
 date:   2019-01-21 19:20:34 -0500
-categories: [Data science]
+categories: [Tools]
 tags: [octave, introduction]
 ---
 

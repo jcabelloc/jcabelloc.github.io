@@ -2,9 +2,10 @@
 layout: post
 title:  "Introduction to Matplotlib"
 date:   2019-01-27 21:20:34 -0500
-categories: [Data science]
+categories: [Python]
 tags: [python, matplotlib, introduction]
 ---
+
 
 A brief introduction to Matplotlib
 
@@ -209,6 +210,8 @@ plt.title('Easy as 1, 2, 3') # subplot 211 title
 x = np.linspace(0,10,100)
 y = 2 + 2 * x
 plt.text(5, 10, r'$y = 2 + 2x $')
+plt.text(5, 15, r"$\theta_0 = 2$", fontsize=14, color="r")
+plt.text(5, 20, r"$\theta_1 = 0.2 \times 10^{1}$", fontsize=14, color="r")
 plt.axis([0, 10, 0, 30])
 plt.plot(x, y)
 
@@ -217,7 +220,7 @@ plt.plot(x, y)
 
 
 
-    [<matplotlib.lines.Line2D at 0x3a61640eb8>]
+    [<matplotlib.lines.Line2D at 0x425e7be9b0>]
 
 
 
@@ -237,6 +240,9 @@ plt.plot(t, s, linewidth=2)
 plt.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
              arrowprops=dict(facecolor='black', shrink=0.05),
              )
+
+plt.plot([2, 2], [-1.5, 1], "r--")
+
 plt.axis([0, 6, -1.5, 2])
 plt.show()
 ```
@@ -418,7 +424,42 @@ axes[2].set_title("custom axes range");
 ![png](/assets/2019-01-28-matplotlib-intro/output_23_0.png)
 
 
+### Plot from a Dataframe
+
+
+```python
+import pandas as pd
+df = pd.DataFrame(np.random.randn(10, 4), index=list('abcdefghij'),
+             columns=list('ABCD'))
+df.plot(kind='scatter', x="A", y='B')
+```
+
+
+
+
+    <matplotlib.axes._subplots.AxesSubplot at 0xb91b814dd8>
+
+
+
+
+![png](/assets/2019-01-28-matplotlib-intro/output_25_1.png)
+
+
+
+```python
+# Plot the histogram for each numerical value
+import matplotlib.pyplot as plt
+df.hist(bins=50, figsize=(20,15))
+plt.show()
+```
+
+
+![png](/assets/2019-01-28-matplotlib-intro/output_26_0.png)
+
+
 ### Samples of plots
 
 ### References:
 https://matplotlib.org/
+
+
