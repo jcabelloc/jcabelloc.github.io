@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Classification task"
 date:   2019-02-27 17:00:34 -0500
 categories: [Machine Learning]
@@ -1018,5 +1019,4 @@ f1_score(y_multilabel, y_train_knn_pred, average="macro")
 ### References
 
 * Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems
-
 

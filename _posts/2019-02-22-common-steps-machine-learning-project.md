@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: false
 title:  "Common Steps on a Machine Learning Project"
 date:   2019-02-22 20:20:34 -0500
 categories: [Machine Learning]
