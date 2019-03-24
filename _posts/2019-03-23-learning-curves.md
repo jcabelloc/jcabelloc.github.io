@@ -138,7 +138,7 @@ plt.show()
 
 As we see in the learning curve of a high bias model, the training performance and validation performance get closer each other with a small set size. We also see that increasing the training set size does not help to improve the performance. 
 
-Now, let's plot the learning curve for a 10-degree polynomial model (high variance). Using a similar approach, we just call he plot learning curve procedure. Similarly, to plot the learning curve as a function of the training set size, 80 polynomial models have been trained. The performance (RMSE) is measured for each one of these 80 linear models using the entire validation set. 
+Now, let's plot the learning curve for a 10-degree polynomial model (high variance). Using a similar approach, we just call the plot learning curve procedure. Similarly, to plot the learning curve as a function of the training set size, 80 polynomial models have been trained. The performance (RMSE) is measured for each one of these 80 linear models using the entire validation set. 
 
 
 ```python
