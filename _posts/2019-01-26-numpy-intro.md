@@ -6,9 +6,12 @@ categories: [Python]
 tags: [python, numpy, introduction]
 ---
 
+
 A brief introduction to NumPy
 
 "NumPy is the fundamental package for scientific computing with Python. It contains among other things"
+
+Last Update: 3/25/2019
 
 ### The basics
 
@@ -81,6 +84,20 @@ c
             [16, 17, 18],
             [19, 20, 21],
             [22, 23, 24]]])
+
+
+
+
+```python
+# Reshape an array as a matrix of one row
+a = np.array([1, 2, 3, 4, 5, 6])
+a.reshape(1, -1), a.reshape(1, -1).shape
+```
+
+
+
+
+    (array([[1, 2, 3, 4, 5, 6]]), (1, 6))
 
 
 
@@ -279,7 +296,7 @@ np.random.permutation(10)
 
 
 
-    array([8, 9, 3, 5, 4, 0, 1, 7, 6, 2])
+    array([4, 2, 0, 9, 1, 8, 7, 6, 5, 3])
 
 
 
@@ -292,9 +309,9 @@ np.random.rand(3,4)
 
 
 
-    array([[0.71794374, 0.96419672, 0.30552228, 0.91227883],
-           [0.30435182, 0.48216834, 0.66421105, 0.52341418],
-           [0.61700862, 0.13274624, 0.68705621, 0.85937783]])
+    array([[0.98861615, 0.57974522, 0.38014117, 0.55094822],
+           [0.74533443, 0.66923289, 0.26491956, 0.06633483],
+           [0.3700842 , 0.62971751, 0.21017401, 0.75275555]])
 
 
 
@@ -307,9 +324,54 @@ np.random.randn(3,4)
 
 
 
-    array([[ 0.73470783,  0.12051316, -0.60581287,  2.45788469],
-           [ 0.72720299, -0.40864697,  1.50380995,  0.0881882 ],
-           [-0.48701366, -1.0951752 ,  0.97543857, -0.72006671]])
+    array([[-0.09387704, -0.16977402, -0.54114463,  0.53794761],
+           [ 0.39128265,  2.21191487, -0.16224463,  0.29117816],
+           [ 0.10806266, -0.19953292,  0.2328323 ,  0.15539326]])
+
+
+
+
+```python
+# Create an array of random integers
+np.random.randint(0, 10, (3, 4))
+```
+
+
+
+
+    array([[3, 8, 8, 0],
+           [6, 7, 9, 5],
+           [4, 9, 5, 2]])
+
+
+
+
+```python
+# Create an identity matrix
+np.identity(3)
+```
+
+
+
+
+    array([[1., 0., 0.],
+           [0., 1., 0.],
+           [0., 0., 1.]])
+
+
+
+
+```python
+# Return a 2-D array with ones on the diagonal and zeros elsewhere.
+np.eye(3, 4)
+```
+
+
+
+
+    array([[1., 0., 0., 0.],
+           [0., 1., 0., 0.],
+           [0., 0., 1., 0.]])
 
 
 
@@ -464,8 +526,22 @@ print('AxB = \n', C)
 
 
 ```python
-# Another way for Matrix Multiplication
+# Use of dot for Matrix Multiplication
 A.dot(B)
+```
+
+
+
+
+    array([[8, 7],
+           [7, 8]])
+
+
+
+
+```python
+# Use of dot for Matrix Multiplication
+np.dot(A, B)
 ```
 
 
@@ -514,18 +590,180 @@ print('Sum: ', A.sum(axis=1))  # Sum of each row
 
 
 ```python
+# Sum rows of a matrix keeping dimensions
+A.sum(axis=1, keepdims=True)
+```
+
+
+
+
+    array([[ 6],
+           [22],
+           [38]])
+
+
+
+
+```python
+# Compare two arrays and returns a new array containing the element-wise maxima
+print(A, '\n')
+np.maximum(A, 5)
+```
+
+    [[ 0  1  2  3]
+     [ 4  5  6  7]
+     [ 8  9 10 11]] 
+    
+    
+
+
+
+
+    array([[ 5,  5,  5,  5],
+           [ 5,  5,  6,  7],
+           [ 8,  9, 10, 11]])
+
+
+
+
+```python
 # Mathematical Functions are elementwise
-a = np.arange(5)
+a = np.array([1, 2, 4])
 print('a: ', a)
 print('power of e: ', np.exp(a))
 print('sqrt: ', np.sqrt(a))
+print('log: ', np.log(a))
+print('abs: ', np.abs(a))
 
 ```
 
-    a:  [0 1 2 3 4]
-    power of e:  [ 1.          2.71828183  7.3890561  20.08553692 54.59815003]
-    sqrt:  [0.         1.         1.41421356 1.73205081 2.        ]
+    a:  [1 2 4]
+    power of e:  [ 2.71828183  7.3890561  54.59815003]
+    sqrt:  [1.         1.41421356 2.        ]
+    log:  [0.         0.69314718 1.38629436]
+    abs:  [1 2 4]
     
+
+
+```python
+# Return a contiguous flattened array.
+A = np.arange(12).reshape(3,4)
+print(A, '\n')
+A.ravel()
+```
+
+    [[ 0  1  2  3]
+     [ 4  5  6  7]
+     [ 8  9 10 11]] 
+    
+    
+
+
+
+
+    array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])
+
+
+
+
+```python
+# Remove single-dimensional entries from the shape of an array.
+A = np.arange(12).reshape(1,12,1)
+print(A, '\n')
+np.squeeze(A)
+```
+
+    [[[ 0]
+      [ 1]
+      [ 2]
+      [ 3]
+      [ 4]
+      [ 5]
+      [ 6]
+      [ 7]
+      [ 8]
+      [ 9]
+      [10]
+      [11]]] 
+    
+    
+
+
+
+
+    array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])
+
+
+
+## Matrix Operations
+
+
+```python
+# Transpose of a Matrix
+A = np.arange(12).reshape(3,4)
+print('A: ', A)
+A.transpose()
+```
+
+    A:  [[ 0  1  2  3]
+     [ 4  5  6  7]
+     [ 8  9 10 11]]
+    
+
+
+
+
+    array([[ 0,  4,  8],
+           [ 1,  5,  9],
+           [ 2,  6, 10],
+           [ 3,  7, 11]])
+
+
+
+
+```python
+# A transpose short way
+A.T
+```
+
+
+
+
+    array([[ 0,  4,  8],
+           [ 1,  5,  9],
+           [ 2,  6, 10],
+           [ 3,  7, 11]])
+
+
+
+
+```python
+# Compute the inverse of a Matrix
+A = np.random.randint(0, 9, (2,2))
+print('A: ', A)
+Ainv = np.linalg.inv(A)
+print('Ainv: ', Ainv)
+```
+
+    A:  [[5 6]
+     [6 8]]
+    Ainv:  [[ 2.   -1.5 ]
+     [-1.5   1.25]]
+    
+
+
+```python
+# Matrix Multiplication of A and Inverse of A returns a identity matrix
+np.dot(A, Ainv)
+```
+
+
+
+
+    array([[1.0000000e+00, 8.8817842e-16],
+           [0.0000000e+00, 1.0000000e+00]])
+
+
 
 ## Indexing, Slicing and Iterating
 
@@ -750,6 +988,35 @@ np.c_[np.array([1,2,3]), np.array([4,5,6])]
 # Keep a same seed in different executions
 np.random.seed(1)
 ```
+
+
+```python
+# Obtain the index of the max value in the array
+np.argmax(np.array([4, 0, 9,6]))
+```
+
+
+
+
+    2
+
+
+
+
+```python
+# Create an assertion condition to validate an array shape
+A = np.arange(12).reshape(3,4)
+print('A: ', A)
+assert(A.shape == (3,4))
+print('\nThis line is printed if the previuos assertion condition is True')
+```
+
+    A:  [[ 0  1  2  3]
+     [ 4  5  6  7]
+     [ 8  9 10 11]]
+    
+    This line is printed if the previuos assertion condition is True
+    
 
 ### References
 http://www.numpy.org/
