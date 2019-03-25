@@ -7,7 +7,7 @@ tags: [python, introduction]
 ---
 
 
-This is a brief introduction to Python 3, a scripting language widely used in data science. 
+This is a brief introduction to Python 3, a scripting language widely used in data science and machine learning.
 
 ### Basic Operations
 
@@ -156,6 +156,50 @@ h
 
 
     False
+
+
+
+### Logical Operators
+
+
+```python
+# Operator: and
+a = 10
+a > 5 and a < 20
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# Operator: or
+a = 10
+a >= 5 or a < 8
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# Operator: not
+a = 10
+not (a < 5)
+```
+
+
+
+
+    True
 
 
 
@@ -340,6 +384,34 @@ letters
 
 
 
+
+```python
+# Check if element is in a list
+letters = list('PYTHON')
+'P' in letters
+```
+
+
+
+
+    True
+
+
+
+
+```python
+# Get index of a element in a list
+fruits = list(['orange', 'apple', 'banana', 'grapes'])
+fruits.index('banana')
+```
+
+
+
+
+    2
+
+
+
 ### IF Statements
 
 
@@ -361,8 +433,23 @@ else:
     Negative changed to zero
     
 
+
+```python
+# Conditional assignment
+grade = 9
+result = 'A' if grade > 9 else 'B'
+result
+```
+
+
+
+
+    'B'
+
+
+
 ### For Statements
-Python’s for statement iterates over the items of any sequence (a list or a string)
+Pythonâ€™s for statement iterates over the items of any sequence (a list or a string)
 
 
 ```python
@@ -692,6 +779,22 @@ customer
 
 
 
+
+```python
+# zip() used to generate an iterator of tuples
+# returns a zip object that is an iterator of tuples
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = zip(a, b)
+for t in c:
+    print(t)
+```
+
+    (1, 4)
+    (2, 5)
+    (3, 6)
+    
+
 ### Sets
 "Python also includes a data type for sets. A set is an unordered collection with no duplicate elements. Basic uses include membership testing and eliminating duplicate entries"
 
@@ -847,7 +950,7 @@ dict(sape=4139, guido=4127, jack=4098)
 
 
 
-### Common Utils
+### Other common functions
 
 
 ```python
@@ -896,6 +999,19 @@ len?
 import os
 datapath = os.path.join("datasets", "islr", "")
 ```
+
+
+```python
+# Capture the enlapsed time of a task
+import time
+tic = time.time();
+time.sleep(2)
+toc = time.time();
+print('The enlapsed time was: ' + str(toc - tic) + " seg")
+```
+
+    The enlapsed time was: 2.00048565864563 seg
+    
 
 ### References:
 https://docs.python.org/3/tutorial/
