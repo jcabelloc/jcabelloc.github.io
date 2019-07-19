@@ -1,16 +1,18 @@
 ---
 layout: post
 comments: true
-title:  "Como iniciarme en Machine Learning"
+title:  "Como iniciarse en Machine Learning"
 date:   2019-07-19 09:20:34 -0500
 categories: [Machine Learning]
 tags: [machine learning]
 ---
-![png](/assets/2019-07-19-como-iniciarme-en-machine-learning/img_01.jpg)
+![png](/assets/2019-07-19-como-iniciarse-en-machine-learning/img_01.jpg)
+
+## Porque este articulo
 Hace poco mas de un año cuando me inicie en el campo de Machine Learning, me hubiese gustado encontrar pautas para hacer que dicho proceso de aprendizaje sea mas efectivo. Luego de invertir importantes recursos(economicos y de tiempo), comparto estas lineas con la finalidad que nuevos interesados en Machine Learning se inicien de forma mas practica, digamos en un periodo de tres a cuatro meses. 
 
 ## Vision en mente
-Dado que uno de los recursos mas valiosos, el tiempo, se vera comprometido significativamente, sugiero fijar y escribir una vision de lo que se espera lograr. Esto ayudara a mantenerse enfocado. Para establecer una vision motivadora, se debe tener una nocion de que es machine learning y que aplicaciones practicas ha logrado. Machine Learning no es mas que la identificacion de patrones, usando muchos datos y algoritmos avanzados, para poder modelar el comportamiento futuro. Ejemplos de estas serian: 
+Para mantenerse enfocado sugiero fijar y escribir una vision de lo que se espera lograr al termino de este periodo. Para establecer una vision motivadora, tenemos que tener una nocion de que trata machine learning y que aplicaciones practicas ha logrado. Bueno,  Machine Learning no es mas que la identificacion de patrones, usando muchos datos y algoritmos avanzados, para poder modelar el comportamiento futuro. Ejemplos, de aplicaciones de machine learning, serian: 
 * Predecir si un potencial cliente terminaria pagando su credito solicitado a una entidad financiera.
 * Mejorar las ventas mediante un sistema de recomendacion de productos en una tienda online.
 * Identificar la actitud del consumidor a la marca basado en los datos de las redes sociales.
@@ -22,20 +24,32 @@ Para establecer la vision ten en cuenta lo siguiente:
 
 ## Requisitos
 Aun cuando muchos podemos lograr tener un entendimiento general de machine learning, la aplicacion practica de machine learning para solucionar problemas requiere de ciertos requisitos.  
-* Tiempo!. De 6 a 8 horas semanales, con una dedicacion de alrededor 2.5 horas en cada sesion.
-* Matematica. Conocimiento de algebra lineal (https://es.wikipedia.org/wiki/%C3%81lgebra_lineal). Nocion de calculo diferencial (opcional).
-* Programacion basica. No importa el lenguaje, sino la nocion de que es y como se elabora un programa.
+* **Tiempo!**. De 6 a 8 horas semanales, con una dedicacion de alrededor 2.5 horas en cada sesion.
+* **Matematica**. Conocimiento de algebra lineal [Algebra Lineal - Wikipedia](https://es.wikipedia.org/wiki/%C3%81lgebra_lineal). Nocion de calculo diferencial (opcional).
+* **Programacion basica**. No importa el lenguaje, sino la nocion de que es y como se elabora un programa.
 
 ## Curso on-line
-De los cientos de cursos disponibles, el curso de Andrew Ng de Stanford University (https://www.coursera.org/learn/machine-learning) es uno de los mejores. El curso es de rigurosidad media. El autor explica muy bien los conceptos y tiene aplicaciones concretas durante el curso. Tambien aprenderas la terminologia de machine learning para que posteriormente expandas tu conocimiento. El curso esta en Ingles, pero tiene subtitulos en español. 
+De los cientos de cursos disponibles, el curso de **Andrew Ng** de Stanford University [Machine Learning - Coursera](https://www.coursera.org/learn/machine-learning) es uno de los mejores. El curso es de rigurosidad media. El autor explica muy bien los conceptos y tiene aplicaciones concretas durante el curso. Tambien aprenderas la terminologia de machine learning para que posteriormente expandas tu conocimiento. El curso esta en Ingles, pero tiene subtitulos en español.
+    <br><br>
+    <a href="https://www.coursera.org/learn/machine-learning" target="_blank"> 
+        <img src="/assets/2019-07-19-como-iniciarse-en-machine-learning/img_02.png" 
+        style="  display: block;   margin-left: auto;   margin-right: auto; width: 40%;" 
+        alt="Machine Learning - Coursera" width="200"/>
+    </a> 
 
 ## Bibliografia
-La referencia bibliografica es muy extensa, pero para iniciar, un libro que sugiero tener a la mano es: Introduction to Statistical Learning (http://faculty.marshall.usc.edu/gareth-james/). Este libro explica muy bien la parte conceptual de cada modelo en machine learning. Tambien provee casos y refiere fuentes de datos que ayudaran a comprender mejor la aplicacion practica de machine learning. El libro lo puedes descargar gratis de su website. 
+La referencia bibliografica es muy extensa, pero para iniciar, un libro que sugiero tener a la mano es: [Introduction to Statistical Learning](http://faculty.marshall.usc.edu/gareth-james/). Este libro explica muy bien la parte conceptual de cada modelo en machine learning. Tambien provee casos y refiere fuentes de datos que ayudaran a comprender mejor la aplicacion practica de machine learning. El libro lo puedes descargar gratis de su website. 
+    <br><br>
+    <a href="http://faculty.marshall.usc.edu/gareth-james/" target="_blank"> 
+        <img src="/assets/2019-07-19-como-iniciarse-en-machine-learning/img_03.jpg" 
+        style="  display: block;   margin-left: auto;   margin-right: auto; width: 20%;" 
+        alt="Libro Intro to Statistical Learning" width="200"/>
+    </a>
 
 ## Otros recursos
 Podria proveer una lista muy amplia de cursos, libros, papers, video tutoriales, blogs, articulos, etc. Sin embargo, esto ha estado y estara alli cuando termines este periodo de tu iniciacion en machine learning. Lo importante es que te mantengas enfocado en este periodo. Con tanta informacion es muy facil perder el enfoque. Machine Learning es un campo muy bien definido al dia de hoy, entonces todos los recursos de aprendizaje comparten la misma fuente de conocimiento base, lo que puede variar es como enfocan su aplicacion o que software usan para una implementacion practica. 
 
-## Aplicacion
+## Aplicacion practica
 Una vez que concluyas con este periodo de iniciacion, implementa la aplicacion practica que visionaste al inicio. Seguro para dicha implementacion, tendras aun algunas brechas de conocimiento, pero no seran mas que brechas que rapidamente podras resolverlas usando recursos on-line. Si en el periodo de aprendizaje, obtuviste nuevas luces que te hicieron reconsiderar o reformular tu vision inicial, ajustala, pero mantente aferrada a una sola vision. La implementacion de una aplicacion practica solidifica tu dominio en el tema.
 
 ## Reflexiones finales
