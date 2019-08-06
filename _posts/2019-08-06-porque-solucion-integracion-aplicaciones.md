@@ -6,7 +6,7 @@ date:   2019-08-06 10:50:34 -0500
 categories: [Arquitectura de Software]
 tags: [architectura de software]
 ---
-![png](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/alina-grubnyak-ZiQkhI7417A-unsplash.jpg)
+![imagen intro](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/alina-grubnyak-ZiQkhI7417A-unsplash.jpg)
 
 ## Contexto
 Sin importar la industria, en la medida que las empresas crecen, pasando de ser pequeñas empresas para ser medianas o gran empresa, su dependencia de aplicaciones es mayor. Dependiendo de la estrategia de la empresa y su modelo de negocio, las empresas tienen mayor o menor dependencia de software. Esta dependencia también se acentúa por otras fuerzas, como son el crecimiento del negocio, la automatización de procesos, la implementación de nuevos canales, el desarrollo de nuevos productos, la integración con terceros, etc. Entonces en poco tiempo, una empresa termina dependiendo de una cantidad importante de aplicaciones, con diferentes tecnologías (nuevas y legadas), diferentes plataformas y lenguajes de programación. Aun cuando los líderes de tecnología, desde una perspectiva de arquitectura, han procurado mantener un ecosistema empresarial tecnológico armonioso para sus intereses, las fuerzas externas a sus fueros son muchas veces más fuertes.
@@ -29,7 +29,7 @@ En toda empresa, donde las aplicaciones empresariales cumplen un rol clave, es u
 
 Por ello la importancia de tener una visión integrada de las aplicaciones y su entorno. Esta es importante, no para decir que se cumple con una buena práctica en la entrega de aplicaciones, sino porque está vinculado estrechamente a la generación sostenida de valor al negocio. Esto se observa en el siguiente diagrama. El entorno en el que se desarrollan los negocios viene cambiando, de la misma manera sus objetivos. Esto implica que los principios de arquitectura y las prácticas de implementación de aplicaciones deben ser reformuladas con la finalidad de aumentar su alineamiento.
 
-![png](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/vision_integrada.png)
+![vision integrada](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/vision_integrada.png)
 
 Por tanto, contar con una visión integrada y alineada a las fuerzas que otorgan ventaja competitiva a la empresa, no es una opción, es una necesidad.
 
@@ -37,7 +37,7 @@ Por tanto, contar con una visión integrada y alineada a las fuerzas que otorgan
 
 Aun cuando cada empresa tiene un contexto diferente que determina sus necesidades de integración de aplicaciones, el diagrama siguiente pretende mostrar un resumen de elementos y fuerzas que empujan la necesidad de integración de aplicaciones.
 
-![png](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/necesidades_integracion.png)
+![necesidades de integracion](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/necesidades_integracion.png)
 
 Ninguno de los elementos mostrados en el diagrama puede existir en forma aislada. Cuando se habilita un canal digital al cliente, se pone a su disposición la capacidad de ser un actor en el proceso de negocio de la empresa. Por lo tanto, estos canales deben tocar/acceder a información que es parte de un sistema central. De igual manera, si se quiere explotar un servicio o capacidad de un tercero (servicio en la nube o no), es necesario integrar información de un tercero que permita generar una mejor experiencia al cliente en términos de inmediatez y simplicidad. De otro lado y sin importar la rapidez con la que una empresa adopte soluciones de software modernas, siempre tendrá que administrar la coexistencia de aplicaciones legadas y aplicaciones modernas en forma consistente e integrada.
 
@@ -56,12 +56,12 @@ La comunicación asíncrona, como se puede inferir, es más versátil en medios 
 
 Hemos mencionado que un integrador de aplicaciones necesita abordar hasta ahora dos situaciones. Hacer comunicar a dos aplicaciones totalmente diferentes y gestionar las llamadas entre ellas de una forma asíncrona. Solo estas dos situaciones, generan una multiplicidad de escenarios de integración. La recurrencia de estos escenarios en el ámbito empresarial, a través del tiempo, ha permitido modelar, a los especialistas en este campo, patrones de integración empresarial [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/) que son de mucha utilidad a la hora de diseñar una solución de integración. Como dice el dicho, para que reinventar la pólvora. 
 
-![png](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/patterns.png)
+![patrones de integracion](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/patterns.png)
 
 
 Naturalmente estos patrones de integración son atómicos, cada uno de ellos cumple una función muy específica. Las soluciones de integración de aplicaciones disponibles en el mercado han implementado estos patrones usando alguna tecnología especifica. Cuando esto sucede, hablamos de tener una solución de integración de aplicaciones o un integrador de aplicaciones. Una vista para entender el rol de estas soluciones en el ámbito de aplicaciones empresariales es como se muestra en el diagrama siguiente.
 
-![png](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/integrador.png)
+![integrador de aplicaciones](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/integrador.png)
 
 Si bien el diagrama muestra dos marcas, como SAP y Saleforce, son solo referenciales. Una solución de integración no está limitada a una tecnología especifica. Una solución de este tipo permite integrar la comunicación entre dos o más aplicaciones, haciendo uso de diversas capacidades. Por ejemplo, la capacidad de transformación le permite transformar el formato de un mensaje específico para que este pueda ser interpretado por otra aplicación. La capacidad de enrutamiento le permite enrutar el mensaje a un punto B o C dependiendo de alguna condición o regla. La capacidad de orquestación, le permite componer varias llamadas en una sola llamada y articular tu ejecución.
 
@@ -78,7 +78,7 @@ Las soluciones de integración de aplicaciones en el mercado son muchas. Existen
 
 En Internet uno puede encontrar comparaciones más detalladas de estas tres soluciones, como en [which-integration-framework](https://dzone.com/articles/which-integration-framework)
 
-![png](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/providers.png)
+![soluciones de integracion](/assets/2019-08-06-porque-solucion-integracion-aplicaciones/providers.png)
 
 
 ## Desafíos para iniciar un proyecto de integración
