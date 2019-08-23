@@ -85,10 +85,9 @@ Como es sabido, la recurrencia para resolver un problema usando software, genera
 ## Tecnologia existente
 
 Los patrones son el marco de especificación que necesita estar soportado en alguna implementación. En la actualidad existen diversas implementaciones de los patrones indicados, muchos de ellos inclusive antes de la existencia de arquitectura de microservicios. En el entorno Java, **Spring Boot** y **Spring Cloud** vienen siendo usado con mucho éxito al momento de implementar una arquitectura de microservicios. 
-* **Spring Boot** hace que el proceso que construccion y configuracion de servicios REST sea una labor mas simple,
-* **Spring Cloud** integra una coleccion de tecnologias open source de compañias como Netflix y HashiCorp que simplifican la gestion de los servicios en el enfoque de microservicios. 
+
 * **Spring Boot** hace que el proceso que construcción y configuración de servicios REST sea una labor más simple,
-* **Spring Cloud** Spring Cloud integra una colección de tecnologías open source de compañías como Netflix y HashiCorp que simplifican la gestión de los servicios en el enfoque de microservicios.
+* **Spring Cloud** integra una colección de tecnologías open source de compañías como Netflix y HashiCorp que simplifican la gestión de los servicios en el enfoque de microservicios.
 
 
 En el siguiente diagrama presentamos la pila tecnológica en el entorno Java y Spring Framework.  
@@ -100,7 +99,7 @@ En el siguiente diagrama presentamos la pila tecnológica en el entorno Java y S
 
 A pesar de los grandes beneficios que trae la adopción de una arquitectura de microservicios, su adopción no es recomendable en los siguientes escenarios.
 * La **aplicación** de software es **departamental**. Esto es, descomponer sus funciones no justifica el esfuerzo.
-* **No se invierte** en los procesos y herramientas que **automatizan y monitorean** la gestión de dependencias, la compilación, las pruebas, la entrega y el despliegue de software.
+* **No se invierte** en los procesos y herramientas que **automatizan y monitorean** la gestión de dependencias, la compilación, las pruebas, la entrega y el despliegue del software.
 * La aplicación de software soporta procesos funcionales: **maduros**, de **baja necesidad de cambios** y de **baja necesidad de escalamiento**. Por ejemplo, un módulo contable. 
 * La aplicación de software requiere de **agregar o transformar** data involucrando **muchas fuentes de datos**. Por ejemplo, un tablero de control empresarial. 
 
