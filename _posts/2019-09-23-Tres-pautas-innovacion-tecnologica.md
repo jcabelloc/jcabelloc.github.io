@@ -38,19 +38,19 @@ Antes de cambiar de sistema, es necesario se redefina la arquitectura de las apl
 ## Moverse a la nube
 Una vez que se cuenta con el equipo y su autonomía para implementar soluciones basados en una nueva arquitectura, es hora de moverse hacia la nube. Cuando hablamos de moverse a la nube, no hablamos de la tarea de alojar nuestro sistema o base de datos en AWS o Google Cloud como lo haríamos en un data center cualquiera. Moverse a la nube es más que eso. Por ello, sacar provecho de su real capacidad es todo un reto. Tenemos que adoptar nuevas formas en el proceso de construcción y en la arquitectura de una aplicación del siguiente modo:
 
-* Todo el proceso de entrega de software debe ser automatizado. El proceso de dependencias, de compilación, de pruebas y de despliegue debe usar soluciones de integración continua o entrega continua.
+* **Todo el proceso de entrega de software debe ser automatizado**. El proceso de dependencias, de compilación, de pruebas y de despliegue debe usar soluciones de integración continua o entrega continua.
 
-* Todo el software y su entorno debe ser gestionado como código fuente. Esto incluye la lógica de negocio, la configuración de la aplicación y de la configuración de la infraestructura que soporta la aplicación.
+* **Todo el software y su entorno debe ser gestionado como código fuente**. Esto incluye la lógica de negocio, la configuración de la aplicación y de la configuración de la infraestructura que soporta la aplicación.
 
-* No más cambios manuales al software. Una vez que los artefactos han sido generados (p.e. imágenes Docker), estas no deben mutar. Si un cambio es requerido, todo el ciclo desde la compilación, pasando por pruebas, debe iniciar nuevamente.
+* **No más cambios manuales al software**. Una vez que los artefactos han sido generados (p.e. imágenes Docker), estas no deben mutar. Si un cambio es requerido, todo el ciclo desde la compilación, pasando por pruebas, debe iniciar nuevamente.
 
-* Adoptar Docker para empaquetar el software. Gestionar la aplicación como un artefacto independiente de la infraestructura es clave para poder aprovechar la elasticidad de la nube y la capacidad de entregar continuamente software funcionando. 
+* **Adoptar Docker para empaquetar el software**. Gestionar la aplicación como un artefacto independiente de la infraestructura es clave para poder aprovechar la elasticidad de la nube y la capacidad de entregar continuamente software funcionando. 
 
 Moverse a la nube, es una estrategia que permite al equipo adoptar las tecnologías más versátiles del mercado mundial a un costo accesible y muchas veces FREE. El equipo también logra autonomía de los recursos computacionales escasos de la organización. Finalmente se paga por lo que se usa y su nivel de riesgo de inversión se limita al tiempo que de su uso.
 
 
 ## Conclusión
-Este articulo agrupa tres medidas clave para incorporar tecnología de software en las iniciativas estratégicas que define la organización: Equipo, Arquitectura y Tecnologías Cloud. No ahondo en mencionar los nombres de los lenguajes de programación, frameworks, librerias y herramientas pues estas pautas aplican a diversos entornos tecnológicos de software
+Este articulo agrupa tres medidas clave para incorporar tecnología de software en las iniciativas estratégicas que define la organización: Equipo, Arquitectura y Tecnologías Cloud. No ahondo en mencionar los nombres de los lenguajes de programación, frameworks, librerias y herramientas pues estas pautas aplican a diversos entornos tecnológicos de software. 
 
 
 
