@@ -44,3 +44,5 @@ plugins:
 
 # Google Analytics
 google_analytics: UA-144909816-1
+
+exclude: ['in_progress']
