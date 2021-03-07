@@ -1,0 +1,666 @@
+I"C�<p>This is a brief introduction to Python 3, a scripting language widely used in data science and machine learning.</p>
+
+<h3 id="basic-operations">Basic Operations</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Order of operators matters
+</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">-</span> <span class="mi">12</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simple Division returns a float
+</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">9</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span> 
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.0
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Floor Division disregards the fractional part
+</span><span class="mi">13</span> <span class="o">//</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Geeting the remainder of a division
+</span><span class="mi">13</span> <span class="o">%</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Power of a number
+</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Variable assigment
+</span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">h</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5.0
+</code></pre></div></div>
+
+<h3 id="comparison-operators">Comparison Operators</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Comparison
+</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Comparison
+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">8</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Comparison
+</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Comparison
+</span><span class="mi">8</span> <span class="o">==</span> <span class="mi">8</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Comparison
+</span><span class="s">'by'</span> <span class="o">==</span> <span class="s">'goodbye'</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<h3 id="logical-operators">Logical Operators</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Operator: and
+</span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">20</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Operator: or
+</span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">8</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Operator: not
+</span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="ow">not</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h3 id="strings">Strings</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># String handling
+</span><span class="n">str1</span> <span class="o">=</span> <span class="s">'Hello'</span>
+<span class="n">str2</span> <span class="o">=</span> <span class="s">" variable 'x'"</span>
+<span class="n">str3</span> <span class="o">=</span> <span class="s">" and variable </span><span class="se">\'</span><span class="s">y</span><span class="se">\'</span><span class="s">"</span>
+<span class="n">str4</span> <span class="o">=</span> <span class="n">str1</span> <span class="o">+</span> <span class="n">str2</span> <span class="o">+</span> <span class="n">str3</span>
+<span class="n">str4</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Hello variable 'x' and variable 'y'"
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># \n causes a new line
+</span><span class="nb">str</span> <span class="o">=</span> <span class="s">'First line.</span><span class="se">\n</span><span class="s">Second line.'</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First line.
+Second line.
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Indexing strings
+</span><span class="n">word</span> <span class="o">=</span> <span class="s">"Python"</span>
+<span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'P'
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Slicing Strings: Characters from position 1 to position 2, position 3 is excluded
+</span><span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> 
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'yt'
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Characters from position 2 to the end
+</span><span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> 
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'thon'
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Length of a string
+</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+</code></pre></div></div>
+
+<h3 id="lists">Lists</h3>
+<p>Lists might contain items of different types, but usually the items all have the same type. Lists are mutable sequences.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># List of Integers
+</span><span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">primes</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 5, 7]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Indexing returns an element
+</span><span class="n">primes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Slicing returns a new list
+</span><span class="n">primes</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Concatenation
+</span><span class="n">primes</span> <span class="o">+</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">17</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 5, 7, 11, 13, 17]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Slice assignation
+</span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'f'</span><span class="p">,</span> <span class="s">'g'</span><span class="p">]</span>
+<span class="n">letters</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">letters</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'f', 'g']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Length of a List
+</span><span class="nb">len</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># List from a String
+</span><span class="n">letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s">'PYTHON'</span><span class="p">)</span>
+<span class="n">letters</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['P', 'Y', 'T', 'H', 'O', 'N']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check if element is in a list
+</span><span class="n">letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s">'PYTHON'</span><span class="p">)</span>
+<span class="s">'P'</span> <span class="ow">in</span> <span class="n">letters</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get index of a element in a list
+</span><span class="n">fruits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([</span><span class="s">'orange'</span><span class="p">,</span> <span class="s">'apple'</span><span class="p">,</span> <span class="s">'banana'</span><span class="p">,</span> <span class="s">'grapes'</span><span class="p">])</span>
+<span class="n">fruits</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="s">'banana'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<h3 id="if-statements">IF Statements</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Please enter an integer: "</span><span class="p">))</span>
+<span class="c1"># if is the minimal required statement
+</span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Negative changed to zero'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Zero'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Single'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'More'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Please enter an integer: -10
+Negative changed to zero
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Conditional assignment
+</span><span class="n">grade</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">result</span> <span class="o">=</span> <span class="s">'A'</span> <span class="k">if</span> <span class="n">grade</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="k">else</span> <span class="s">'B'</span>
+<span class="n">result</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'B'
+</code></pre></div></div>
+
+<h3 id="for-statements">For Statements</h3>
+<p>Pythonâ€™s for statement iterates over the items of any sequence (a list or a string)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Obtain the length of some strings:
+</span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Python'</span><span class="p">,</span> <span class="s">'Java'</span><span class="p">,</span> <span class="s">'Pascal'</span><span class="p">]</span>
+<span class="c1"># use 'for' to iterate a list
+</span><span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s">'-&gt;'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Python -&gt; 6
+Java -&gt; 4
+Pascal -&gt; 6
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+1
+4
+9
+16
+</code></pre></div></div>
+
+<h3 id="while-statement">While Statement</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'i is: {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i is: 1
+i is: 2
+i is: 3
+</code></pre></div></div>
+
+<h3 id="pass-statements">pass Statements</h3>
+<p>“The pass statement does nothing. It can be used when a statement is required syntactically but the program requires no action”</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="k">pass</span>  <span class="c1"># Does nothing
+</span></code></pre></div></div>
+
+<h3 id="the-range-function">The range() Function</h3>
+<p>The range type represents an immutable sequence of numbers and is commonly used for looping a specific number of times in for loops.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># range() defines an iterable, in this case of 4 values
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+1
+2
+3
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># range() can start at another number
+</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+6
+7
+8
+9
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># range() returns an object(iterable) which returns the successive items of 
+# the desired sequence when you iterate over it
+</span><span class="n">r</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">r</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>range(0, 10, 3)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The function list() creates lists from iterables
+</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 3, 6, 9]
+</code></pre></div></div>
+
+<h3 id="functions">Functions</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The keyword def introduces a function definition.
+</span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c1"># Calculates the square of a number n
+</span>    <span class="k">return</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calling our square function
+</span><span class="n">square</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Assigning the function to a variable and calling that
+</span><span class="n">sq</span> <span class="o">=</span> <span class="n">square</span>
+<span class="n">sq</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Default argument value
+</span><span class="k">def</span> <span class="nf">repeatPrint</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">finalMsg</span><span class="o">=</span><span class="s">'Bye'</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">times</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">finalMsg</span><span class="p">)</span>
+
+    
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calling the function with all arguments
+</span><span class="n">repeatPrint</span><span class="p">(</span><span class="s">'Hello'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'Good bye'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello
+Hello
+Good bye
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calling the function without optinal argument
+</span><span class="n">repeatPrint</span><span class="p">(</span><span class="s">'Hello'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello
+Hello
+Hello
+Hello
+Hello
+Bye
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Using keyword Arguments
+</span><span class="n">repeatPrint</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s">'Hi'</span><span class="p">,</span> <span class="n">finalMsg</span><span class="o">=</span><span class="s">'HoHoHo'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hi
+Hi
+Hi
+HoHoHo
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Keywords and arguments
+</span><span class="k">def</span> <span class="nf">cheeseshop</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">keywords</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"-- Do you have any"</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="s">"?"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"-- I'm sorry, we're all out of"</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">arguments</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"-"</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">kw</span><span class="p">,</span> <span class="s">":"</span><span class="p">,</span> <span class="n">keywords</span><span class="p">[</span><span class="n">kw</span><span class="p">])</span>
+<span class="c1"># 
+# Calling the defined function
+</span><span class="n">cheeseshop</span><span class="p">(</span><span class="s">"Limburger"</span><span class="p">,</span> <span class="s">"It's very runny, sir."</span><span class="p">,</span>
+           <span class="s">"It's really very, VERY runny, sir."</span><span class="p">,</span>
+           <span class="n">shopkeeper</span><span class="o">=</span><span class="s">"Michael Palin"</span><span class="p">,</span>
+           <span class="n">client</span><span class="o">=</span><span class="s">"John Cleese"</span><span class="p">,</span>
+           <span class="n">sketch</span><span class="o">=</span><span class="s">"Cheese Shop Sketch"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-- Do you have any Limburger ?
+-- I'm sorry, we're all out of Limburger
+It's very runny, sir.
+It's really very, VERY runny, sir.
+----------------------------------------
+shopkeeper : Michael Palin
+client : John Cleese
+sketch : Cheese Shop Sketch
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Unpacking Argument Lists
+</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># normal call with separate arguments
+</span><span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>      <span class="c1"># List 
+</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>  <span class="c1"># call with arguments unpacked from a list
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[3, 4, 5]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Documentation of Functions
+</span><span class="k">def</span> <span class="nf">myFunction</span><span class="p">():</span>
+    <span class="s">"""Do nothing, but document it.
+    
+    No, really, it doesn't do anything.
+        """</span>
+    <span class="k">pass</span>
+<span class="c1">#
+</span><span class="k">print</span><span class="p">(</span><span class="n">myFunction</span><span class="p">.</span><span class="n">__doc__</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Do nothing, but document it.
+    
+    No, really, it doesn't do anything.
+</code></pre></div></div>
+
+<h3 id="lambda-expressions">Lambda Expressions</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define the lambda expression
+</span><span class="k">def</span> <span class="nf">any_exp</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="n">n</span>
+
+<span class="c1"># Call the lambda expression
+</span><span class="n">cubic</span> <span class="o">=</span> <span class="n">any_exp</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">cubic</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>64
+</code></pre></div></div>
+
+<h3 id="tuples">Tuples</h3>
+<p>“Tuples are immutable sequences, typically used to store collections of heterogeneous data”. “A tuple consists of a number of values separated by commas”</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Defining a tuple with heterogenous data
+</span><span class="n">t</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s">'hello!'</span>
+<span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 12345
+</span><span class="n">t</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(12345, 54321, 'hello!')
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Tuples may be nested:
+</span><span class="n">u</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">u</span>
+<span class="c1"># Tuples are immutable:
+# t[0] = 100 # yields error
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Tuples enclosed in parentheses
+</span><span class="n">customer</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="s">'Texas'</span><span class="p">,</span> <span class="s">'Male'</span><span class="p">)</span>
+<span class="n">customer</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1234, 'Texas', 'Male')
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># zip() used to generate an iterator of tuples
+# returns a zip object that is an iterator of tuples
+</span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1, 4)
+(2, 5)
+(3, 6)
+</code></pre></div></div>
+
+<h3 id="sets">Sets</h3>
+<p>“Python also includes a data type for sets. A set is an unordered collection with no duplicate elements. Basic uses include membership testing and eliminating duplicate entries”</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Duplicates are removed
+</span><span class="n">countries</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Peru'</span><span class="p">,</span> <span class="s">'Mexico'</span><span class="p">,</span> <span class="s">'Chile'</span><span class="p">,</span> <span class="s">'Peru'</span><span class="p">,</span> <span class="s">'Canada'</span><span class="p">,</span> <span class="s">'Chile'</span><span class="p">}</span>
+<span class="n">countries</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'Canada', 'Chile', 'Mexico', 'Peru'}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Membershing validation
+</span><span class="s">'Peru'</span> <span class="ow">in</span> <span class="n">countries</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># set() can be used to create sets
+</span><span class="n">set_let</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">'tennessee'</span><span class="p">)</span>
+<span class="n">set_let</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'e', 'n', 's', 't'}
+</code></pre></div></div>
+
+<h3 id="dictionaries">Dictionaries</h3>
+<p>“It is best to think of a dictionary as a set of key: value pairs, with the requirement that the keys are unique (within one dictionary)”</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Defining a dictionary
+</span><span class="n">tel</span> <span class="o">=</span> <span class="p">{</span><span class="s">'jack'</span><span class="p">:</span> <span class="mi">4098</span><span class="p">,</span> <span class="s">'sape'</span><span class="p">:</span> <span class="mi">4139</span><span class="p">}</span>
+<span class="n">tel</span><span class="p">[</span><span class="s">'guido'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4127</span>
+<span class="n">tel</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'jack': 4098, 'sape': 4139, 'guido': 4127}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Accesing a value
+</span><span class="n">tel</span><span class="p">[</span><span class="s">'jack'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4098
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Delete a key-value
+</span><span class="k">del</span> <span class="n">tel</span><span class="p">[</span><span class="s">'sape'</span><span class="p">]</span>
+<span class="n">tel</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'jack': 4098, 'guido': 4127}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Adding a key-value
+</span><span class="n">tel</span><span class="p">[</span><span class="s">'irv'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4127</span>
+<span class="n">tel</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'jack': 4098, 'guido': 4127, 'irv': 4127}
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># List the keys
+</span><span class="nb">list</span><span class="p">(</span><span class="n">tel</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['jack', 'guido', 'irv']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Sort the list of keys
+</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tel</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['guido', 'irv', 'jack']
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Validate the existance of a key
+</span><span class="s">'guido'</span> <span class="ow">in</span> <span class="n">tel</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Construct a dictionary from key-pair value
+</span><span class="nb">dict</span><span class="p">(</span><span class="n">sape</span><span class="o">=</span><span class="mi">4139</span><span class="p">,</span> <span class="n">guido</span><span class="o">=</span><span class="mi">4127</span><span class="p">,</span> <span class="n">jack</span><span class="o">=</span><span class="mi">4098</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'sape': 4139, 'guido': 4127, 'jack': 4098}
+</code></pre></div></div>
+
+<h3 id="other-common-functions">Other common functions</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Print supports multiparameters
+</span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1416</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'The value of pi is:'</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The value of pi is: 3.1416
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Print with format
+</span><span class="n">num</span> <span class="o">=</span> <span class="s">'123'</span><span class="p">;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">'Jhon'</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'My number is: {a}, and my name is: {b}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">num</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="n">name</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>My number is: 123, and my name is: Jhon
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Type of an object
+</span><span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s">'UTIL'</span><span class="p">);</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Help/Documentation
+</span><span class="nb">len</span><span class="err">?</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Set a O.S. directory path
+</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">datapath</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"datasets"</span><span class="p">,</span> <span class="s">"islr"</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Capture the enlapsed time of a task
+</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">();</span>
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">toc</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">();</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'The enlapsed time was: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span><span class="p">)</span> <span class="o">+</span> <span class="s">" seg"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The enlapsed time was: 2.00048565864563 seg
+</code></pre></div></div>
+
+<h3 id="references">References:</h3>
+<p>https://docs.python.org/3/tutorial/</p>
+:ET

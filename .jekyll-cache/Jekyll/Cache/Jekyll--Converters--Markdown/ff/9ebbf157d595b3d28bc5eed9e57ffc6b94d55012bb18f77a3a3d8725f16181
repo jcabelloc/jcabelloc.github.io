@@ -1,0 +1,487 @@
+I"RS<p>A brief introduction to Octave, a numerical tool that makes math much easier.</p>
+
+<h3 id="basic-operations">Basic Operations</h3>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Basic Operations</span>
+<span class="mi">4</span> <span class="o">+</span> <span class="mi">6</span> 
+<span class="mi">8</span> <span class="o">-</span> <span class="mi">2</span> 
+<span class="mi">7</span><span class="o">*</span><span class="mi">2</span>
+<span class="mi">8</span><span class="p">/</span><span class="mi">3</span>
+<span class="mi">3</span><span class="o">^</span><span class="mi">4</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =  10
+ans =  6
+ans =  14
+ans =  2.6667
+ans =  81
+</code></pre></div></div>
+
+<h3 id="basic-logical-operations">Basic Logical Operations</h3>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Basic Logical Operations</span>
+<span class="mi">4</span> <span class="o">==</span> <span class="mi">5</span> <span class="c1">% false</span>
+<span class="mi">7</span> <span class="o">~=</span> <span class="mi">10</span> <span class="c1">% true</span>
+<span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="mi">0</span> <span class="c1">% false</span>
+<span class="mi">0</span> <span class="o">||</span> <span class="mi">1</span> <span class="c1">% true</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans = 0
+ans = 1
+ans = 0
+ans = 1
+</code></pre></div></div>
+
+<h3 id="variable-assignment">Variable Assignment</h3>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Variable Assignment</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">'Hello'</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">10</span><span class="o">&lt;=</span><span class="mi">5</span>  <span class="c1">% false</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x =  10
+y = Hello
+z = 0
+</code></pre></div></div>
+
+<h3 id="display-variables">Display variables</h3>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Display variables</span>
+<span class="n">p</span> <span class="o">=</span> <span class="nb">pi</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="c1">% Displaying with format</span>
+<span class="nb">disp</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s1">'pi showing 2 decimals: %0.2f'</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p =  3.1416
+ 3.1416
+pi showing 2 decimals: 3.14
+</code></pre></div></div>
+
+<h3 id="vector-and-matrices">Vector and Matrices</h3>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Vector and Matrices</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span> <span class="c1">% 3x2 Matrix</span>
+<span class="n">r</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span> <span class="c1">% row vector</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">7</span><span class="p">;</span> <span class="mi">8</span><span class="p">;</span> <span class="mi">9</span><span class="p">]</span> <span class="c1">% column Vector</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A =
+
+   1   2
+   3   4
+   5   6
+
+r =
+
+   4   5   6
+
+v =
+
+   7
+   8
+   9
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Common Generators</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mf">0.2</span><span class="p">:</span><span class="mi">2</span>  <span class="c1">% Generate a vector with 0.2 Stepwise</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span> <span class="c1">% Asumme stepwise 1</span>
+<span class="n">C</span> <span class="o">=</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c1">% Matrix of ones</span>
+<span class="n">D</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1">% Matrix of zeros</span>
+<span class="n">E</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1">% Matrix of random values with uniformed distribution</span>
+<span class="n">W</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1">% Matrix of random values with normal distribution</span>
+<span class="n">I</span> <span class="o">=</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1">% Identity matrix of 5x5</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a =
+
+    1.0000    1.2000    1.4000    1.6000    1.8000    2.0000
+
+b =
+
+    1    2    3    4    5    6    7    8    9   10
+
+C =
+
+   1   1   1   1
+   1   1   1   1
+   1   1   1   1
+
+D =
+
+   0   0   0
+   0   0   0
+
+E =
+
+   0.3139465   0.5320929   0.0065746   0.2191232   0.3255126
+   0.6983155   0.1484724   0.7644968   0.3556319   0.0315069
+
+W =
+
+  -0.713562   0.159652  -1.440057
+   0.432062   1.298259   1.869419
+  -0.971604   0.832845   0.680742
+  -0.665553  -0.606924  -0.054982
+
+I =
+
+Diagonal Matrix
+
+   1   0   0   0   0
+   0   1   0   0   0
+   0   0   1   0   0
+   0   0   0   1   0
+   0   0   0   0   1
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Dimensions</span>
+<span class="n">A</span>
+<span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1">% [(Number of rows) (Number of columms)]</span>
+<span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1">% Number of rows</span>
+<span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">% Number of columns</span>
+<span class="nb">length</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1">% length of the longest dimension</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A =
+
+   1   2
+   3   4
+   5   6
+
+ans =
+
+   3   2
+
+ans =  3
+ans =  2
+ans =  3
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Indexing</span>
+<span class="n">A</span> <span class="o">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="err">#</span> <span class="n">Returns</span> <span class="n">a</span> <span class="mi">4</span><span class="n">x4</span> <span class="nb">magic</span> <span class="n">matrix</span>
+<span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span> <span class="c1">% Get the third row</span>
+<span class="n">A</span><span class="p">(:,</span><span class="mi">4</span><span class="p">)</span> <span class="c1">% Get the fourth column as a vector</span>
+<span class="n">A</span><span class="p">([</span><span class="mi">1</span> <span class="mi">4</span><span class="p">],:)</span> <span class="c1">% Get the 1st and 4th row</span>
+<span class="n">A</span><span class="p">(:)</span> <span class="c1">% Select all elements as a column vector</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A =
+
+   16    2    3   13
+    5   11   10    8
+    9    7    6   12
+    4   14   15    1
+
+ans =
+
+    9    7    6   12
+
+ans =
+
+   13
+    8
+   12
+    1
+
+ans =
+
+   16    2    3   13
+    4   14   15    1
+
+ans =
+
+   16
+    5
+    9
+    4
+    2
+   11
+    7
+   14
+    3
+   10
+    6
+   15
+   13
+    8
+   12
+    1
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Joining Data</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">4</span><span class="p">;</span> <span class="mi">5</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">6</span> <span class="mi">6</span><span class="p">]</span> <span class="c1">% same dims as A</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span> <span class="n">B</span><span class="p">]</span>  <span class="c1">% concatenating A and B along rows</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">]</span> <span class="c1">% concatenating A and B along rows</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">;</span> <span class="n">B</span><span class="p">]</span> <span class="c1">% Concatenating A and B along columns</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A =
+
+   1   1
+   2   2
+   3   3
+
+B =
+
+   4   4
+   5   5
+   6   6
+
+C =
+
+   1   1   4   4
+   2   2   5   5
+   3   3   6   6
+
+C =
+
+   1   1   4   4
+   2   2   5   5
+   3   3   6   6
+
+C =
+
+   1   1
+   2   2
+   3   3
+   4   4
+   5   5
+   6   6
+</code></pre></div></div>
+
+<h3 id="calculations-on-matrices">Calculations on Matrices</h3>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% initialize variables</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span><span class="p">;</span><span class="mi">2</span> <span class="mi">2</span><span class="p">;</span><span class="mi">3</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">4</span><span class="p">;</span><span class="mi">5</span> <span class="mi">5</span><span class="p">;</span><span class="mi">6</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span><span class="p">;</span><span class="mi">2</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A =
+
+   1   1
+   2   2
+   3   3
+
+B =
+
+   4   4
+   5   5
+   6   6
+
+C =
+
+   1   1
+   2   2
+
+v =
+
+   1
+   2
+   3
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Matrix multiplication</span>
+<span class="n">A</span> <span class="o">*</span> <span class="n">C</span>  <span class="c1">% matrix multiplication</span>
+<span class="n">A</span> <span class="o">.*</span> <span class="n">B</span> <span class="c1">% element-wise multiplication</span>
+<span class="c1">% A .* C  or A * B gives error - wrong dimensions</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
+
+   3   3
+   6   6
+   9   9
+
+ans =
+
+    4    4
+   10   10
+   18   18
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Explicit and implicit element-wise operations</span>
+<span class="n">A</span> <span class="o">.^</span> <span class="mi">2</span> <span class="c1">% element-wise square of each element in A</span>
+<span class="mf">1.</span><span class="p">/</span><span class="n">B</span>   <span class="c1">% element-wise reciprocal</span>
+<span class="nb">log</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1">% functions like this operate element-wise on vecs or matrices </span>
+<span class="nb">exp</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="nb">abs</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
+
+   1   1
+   4   4
+   9   9
+
+ans =
+
+   0.25000   0.25000
+   0.20000   0.20000
+   0.16667   0.16667
+
+ans =
+
+   0.00000
+   0.69315
+   1.09861
+
+ans =
+
+    2.7183
+    7.3891
+   20.0855
+
+ans =
+
+   1
+   2
+   3
+
+ans =
+
+   2
+   3
+   4
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">-</span><span class="mi">10</span> <span class="mi">3</span><span class="p">]</span> <span class="c1">% Vector</span>
+<span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="c1">% Returns the max element of the vector</span>
+<span class="n">A</span> <span class="o">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">% Matrix 3x3</span>
+<span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1">% Returns the max element of each column</span>
+<span class="p">[</span><span class="n">val</span><span class="p">,</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1">% Returns the values and indices of those values</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>v =
+
+    2  -10    3
+
+ans =  3
+A =
+
+   8   1   6
+   3   5   7
+   4   9   2
+
+ans =
+
+   8   9   7
+
+val =
+
+   8   9   7
+
+ind =
+
+   1   3   2
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="c1">% Returns for each element 1(True) or 0(False) based on the condition</span>
+<span class="p">[</span><span class="n">r</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">find</span><span class="p">(</span><span class="n">A</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">);</span> <span class="c1">% gets row and column of elements matching the condition</span>
+<span class="p">[</span><span class="n">r</span> <span class="n">c</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ans =
+
+  0  1  0
+  1  1  0
+  1  0  1
+
+ans =
+
+   2   1
+   3   1
+   1   2
+   2   2
+   3   3
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">5</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1">% Sum along the columns</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1">% Sum along the columns</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">% Sum along the rows</span>
+<span class="nb">prod</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1">% Product along the columns</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A =
+
+   1   1
+   3   3
+   5   5
+
+ans =
+
+   9   9
+
+ans =
+
+   9   9
+
+ans =
+
+    2
+    6
+   10
+
+ans =
+
+   15   15
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Matrix inverse(pseudo-inverse)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="nb">magic</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Ai</span> <span class="o">=</span> <span class="nb">pinv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">*</span> <span class="n">Ai</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A =
+
+   8   1   6
+   3   5   7
+   4   9   2
+
+Ai =
+
+   0.147222  -0.144444   0.063889
+  -0.061111   0.022222   0.105556
+  -0.019444   0.188889  -0.102778
+
+ans =
+
+   1.0000e+00  -1.2212e-14   6.3283e-15
+   5.5511e-17   1.0000e+00  -2.2204e-16
+  -5.9952e-15   1.2268e-14   1.0000e+00
+</code></pre></div></div>
+
+<h3 id="common-functions">Common functions</h3>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Change Directory</span>
+<span class="nb">cd</span> <span class="s1">'C:\jcabelloc\workspace\jupyter-notebooks\octave\learning_octave'</span><span class="p">;</span>
+<span class="c1">% List files in the current directory</span>
+<span class="nb">ls</span><span class="p">;</span>
+<span class="c1">% Loading data separed by commas </span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">load</span><span class="p">(</span><span class="s1">'dataxy.txt'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Volume in drive C has no label.
+ Volume Serial Number is 3C46-9A6F
+
+ Directory of C:\jcabelloc\workspace\jupyter-notebooks\octave\learning_octave
+
+[.]                            dataxy.txt
+[..]                           octave_getting_started.ipynb
+[.ipynb_checkpoints]           
+               2 File(s)         10,922 bytes
+               3 Dir(s)  69,180,248,064 bytes free
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Ask for help</span>
+<span class="c1">% help rand</span>
+<span class="c1">% help randn</span>
+</code></pre></div></div>
+:ET

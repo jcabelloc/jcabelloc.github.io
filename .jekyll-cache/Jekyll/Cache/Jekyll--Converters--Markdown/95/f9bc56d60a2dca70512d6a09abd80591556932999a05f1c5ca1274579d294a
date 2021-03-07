@@ -1,0 +1,723 @@
+I"/<p>This notebook contains steps and code to get started with classification tasks. We wil be using the Fashin-MNIST dataset, an alternative dataset to the well-known MNIST dataset</p>
+
+<h3 id="setup">Setup</h3>
+<p>This cell contains code for referring the common imports that we will be using through this notebook.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Common imports
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># to make this notebook's output stable across runs
+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># To plot pretty figures
+</span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="n">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">mpl</span><span class="p">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'axes'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="p">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'xtick'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">mpl</span><span class="p">.</span><span class="n">rc</span><span class="p">(</span><span class="s">'ytick'</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="fashion-mnist-dataset">Fashion-MNIST Dataset</h3>
+
+<p>Fashion-MNIST is a dataset of Zalando’s article images, consisting of a training set of 60,000 examples and a test set of 10,000 examples. Each example is a 28x28 grayscale image, associated with a label from 10 classes.</p>
+
+<ul>
+  <li>0 T-shirt/top</li>
+  <li>1 Trouser</li>
+  <li>2 Pullover</li>
+  <li>3 Dress</li>
+  <li>4 Coat</li>
+  <li>5 Sandal</li>
+  <li>6 Shirt</li>
+  <li>7 Sneaker</li>
+  <li>8 Bag</li>
+  <li>9 Ankle boot</li>
+</ul>
+
+<p>We will be using openml, a popular library that makes interesting datasets available.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Fetching the Fashion-MNIST dataset by using openml
+</span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s">'Fashion-MNIST'</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">mnist</span><span class="p">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">int8</span><span class="p">)</span> <span class="c1"># fetch_openml() returns targets as strings
+</span><span class="n">mnist</span><span class="p">[</span><span class="s">"data"</span><span class="p">],</span> <span class="n">mnist</span><span class="p">[</span><span class="s">"target"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([[0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.]]),
+ array([9, 0, 0, ..., 8, 1, 5], dtype=int8))
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's figure out how many instance our dataset contains
+</span><span class="n">mnist</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">shape</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(70000, 784)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Assign features to "X", and labels to "y"
+</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">[</span><span class="s">"data"</span><span class="p">],</span> <span class="n">mnist</span><span class="p">[</span><span class="s">"target"</span><span class="p">]</span>
+<span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="p">.</span><span class="n">shape</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>((70000, 784), (70000,))
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Pick up an item and show it
+</span><span class="n">item</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">36030</span><span class="p">]</span>
+<span class="n">item_image</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">item_image</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">binary</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">"nearest"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">36030</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_7_0.png" alt="png" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<h3 id="explore-data">Explore data</h3>
+
+<p>The following cells contain code to plot a portion of the data. The idea is getting familiar with the data by visualizing it.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a function to plot items
+</span><span class="k">def</span> <span class="nf">plot_items</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="n">images_per_row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="mi">28</span>
+    <span class="n">images_per_row</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">instances</span><span class="p">),</span> <span class="n">images_per_row</span><span class="p">)</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">instance</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">size</span><span class="p">)</span> <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">]</span>
+    <span class="n">n_rows</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">images_per_row</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">row_images</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n_empty</span> <span class="o">=</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="n">images_per_row</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+    <span class="n">images</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span> <span class="o">*</span> <span class="n">n_empty</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
+        <span class="n">rimages</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">images_per_row</span> <span class="p">:</span> <span class="p">(</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">images_per_row</span><span class="p">]</span>
+        <span class="n">row_images</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">rimages</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">row_images</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">binary</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Show a batch of items.
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">example_images</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">r_</span><span class="p">[</span><span class="n">X</span><span class="p">[:</span><span class="mi">2500</span><span class="p">:</span><span class="mi">50</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">30000</span><span class="p">:</span><span class="mi">35000</span><span class="p">:</span><span class="mi">100</span><span class="p">]]</span>
+<span class="n">plot_items</span><span class="p">(</span><span class="n">example_images</span><span class="p">,</span> <span class="n">images_per_row</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_10_0.png" alt="png" /></p>
+
+<h3 id="split-the-data-into-train-and-test-dataset">Split the data into train and test dataset</h3>
+
+<p>These cells contain two alternatives for splitting the dataset into train and test dataset. While the first code one assumes that data is randomly distributed, the second one includes a step to randomly distribute the test data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">60000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">60000</span><span class="p">:],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">60000</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">60000</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">shuffle_index</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">60000</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">shuffle_index</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[</span><span class="n">shuffle_index</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="binary-classifier">Binary Classifier</h3>
+
+<p>Our first task will be to build a binary classifier that predicts if a item is a dress or not (We could have picked up another item). By re labeling the data into these two classes (if dress or not), we are obtaining a skewed dataset. That is, there is not balance in the number of intances per each class.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_train_dress</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y_test_dress</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Train a SGDClassifier
+</span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+
+<span class="n">sgd_clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tol</span><span class="o">=-</span><span class="n">np</span><span class="p">.</span><span class="n">infty</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">sgd_clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SGDClassifier(alpha=0.0001, average=False, class_weight=None,
+       early_stopping=False, epsilon=0.1, eta0=0.0, fit_intercept=True,
+       l1_ratio=0.15, learning_rate='optimal', loss='hinge', max_iter=5,
+       n_iter=None, n_iter_no_change=5, n_jobs=None, penalty='l2',
+       power_t=0.5, random_state=10, shuffle=True, tol=-inf,
+       validation_fraction=0.1, verbose=0, warm_start=False)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Once fitting our model, we can predict the result for a specific instance
+</span><span class="n">sgd_clf</span><span class="p">.</span><span class="n">predict</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True])
+</code></pre></div></div>
+
+<h3 id="measuring-accuracy-using-cross-validation">Measuring accuracy using Cross Validation</h3>
+
+<p>Cross Validation is a popular technique to estimate perfomance measures but for validation sets. The idea is to obtain measures that leads us to understand the possible performance in unseen data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">cross_val_score</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">"accuracy"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.96185, 0.9571 , 0.9612 ])
+</code></pre></div></div>
+
+<p>The following code helps to understand what is going on behind the scenes when we use cross validation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">clone</span>
+
+<span class="n">skfolds</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">val_index</span> <span class="ow">in</span> <span class="n">skfolds</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">):</span>
+    <span class="n">clone_clf</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">)</span>
+    <span class="n">X_train_folds</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+    <span class="n">y_train_folds</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train_dress</span><span class="p">[</span><span class="n">train_index</span><span class="p">])</span>
+    <span class="n">X_val_fold</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">val_index</span><span class="p">]</span>
+    <span class="n">y_val_fold</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_train_dress</span><span class="p">[</span><span class="n">val_index</span><span class="p">])</span>
+
+    <span class="n">clone_clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_folds</span><span class="p">,</span> <span class="n">y_train_folds</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clone_clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val_fold</span><span class="p">)</span>
+    <span class="n">n_correct</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_val_fold</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">n_correct</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.96185
+0.9571
+0.9612
+</code></pre></div></div>
+
+<p>The accuracy obtained is pretty atractive, being this a first attempt. However, sometimes just paying attention to the accuracy can be misleading. In the following lines, a naive NeverDressClassifier can obtain 90% of accuracy</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="k">class</span> <span class="nc">NeverDressClassifier</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">never_dress_clf</span> <span class="o">=</span> <span class="n">NeverDressClassifier</span><span class="p">()</span>
+<span class="n">cross_val_score</span><span class="p">(</span><span class="n">never_dress_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">,</span>
+                <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">"accuracy"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.9029 , 0.89605, 0.90105])
+</code></pre></div></div>
+
+<h3 id="confusion-matrix">Confusion Matrix</h3>
+
+<p>The confusion matrix provides more information about the performance of a classifier and allow us to build other important metrics in classification tasks. This matrix contrast the actual label against the precited label in the following way:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>__</strong><strong>__</strong></th>
+      <th>Predicted Neg.</th>
+      <th>Predicted Pos.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Actual Neg.</td>
+      <td>TN</td>
+      <td>FP</td>
+    </tr>
+    <tr>
+      <td>Actual Pos.</td>
+      <td>FN</td>
+      <td>TP</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Where:</p>
+
+<p>TN: True Negative</p>
+
+<p>TP: True Positive</p>
+
+<p>FP: False Positive</p>
+
+<p>FN: False Negative</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Obtain predictions by using the SGDClassifier and Cross Validation
+</span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+<span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[53176,   824],
+       [ 1573,  4427]], dtype=int64)
+</code></pre></div></div>
+
+<p>The false positive and false negative values give us suplemental information to understand the performance of our model. An ideal model will show zero for these two values, as the following cells show.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_train_perfect_predictions</span> <span class="o">=</span> <span class="n">y_train_dress</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_perfect_predictions</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[54000,     0],
+       [    0,  6000]], dtype=int64)
+</code></pre></div></div>
+
+<h3 id="precision-and-recall">Precision and Recall</h3>
+
+<p>Precision and Recall are two measures that together give more information than the accuracy does. They are defined in the following way:</p>
+
+<p>Precision = TP / (TP + FP)</p>
+
+<p>Recall = TP / (TP + FN)</p>
+
+<p>We can obtain them by using utilities or by calculation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+<span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8430775090458961
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4427</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4427</span> <span class="o">+</span> <span class="mi">824</span><span class="p">)</span>   <span class="c1"># TP / (TP + FP)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.8430775090458961
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7378333333333333
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">4427</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4427</span> <span class="o">+</span> <span class="mi">1573</span><span class="p">)</span>   <span class="c1"># TP / (TP + FN)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7378333333333333
+</code></pre></div></div>
+
+<p>Precision a recall together provide more information than the accuracy does, but there is one score called F1 score, that merges the precision and recall to give us one idea of the performance of the model. A greater F1 score (close to 1) is better. It is defined in the following way:</p>
+
+<p>f1_score= 2 (Precision)(Recall) / (Precision + Recall)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<span class="n">f1_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7869522709092526
+</code></pre></div></div>
+
+<h3 id="precisionrecall-tradeoff">Precision/Recall tradeoff</h3>
+
+<p>Although precision and recall closing to one are better values, there is tradeoff between these two metrics. That is, for a specific trained model, if we modified the threshold we might obtain a better precision but a worse recall and viceversa.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># For our item, obtain the score that leads to its classification
+</span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">sgd_clf</span><span class="p">.</span><span class="n">decision_function</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+<span class="n">y_scores</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([373576.68954112])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Compute the prediction with a threshold of zero
+</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y_item_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="n">y_item_pred</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Compute the prediction with a different threshold
+</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">500000</span>
+<span class="n">y_item_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="n">y_item_pred</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([False])
+</code></pre></div></div>
+
+<p>As we see, by modifiying the threshold we might alter the prediction. Now, let’s show how the precision and recall change as a function of the threshold</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Obtain the scores for each instance by using SGDC and cross validation
+</span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                             <span class="n">method</span><span class="o">=</span><span class="s">"decision_function"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Generate the precision and recall values for a range of thresholds
+</span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
+<span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span>
+                                                         <span class="n">y_scores</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Plot the precision and recall as a function of the threshold
+</span><span class="k">def</span> <span class="nf">plot_precision_recall_vs_threshold</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">precisions</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s">"b--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Precision"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">recalls</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s">"g-"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Recall"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Threshold"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">"upper left"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plot_precision_recall_vs_threshold</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1500000</span><span class="p">,</span> <span class="mi">1200000</span><span class="p">])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_46_0.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">y_train_pred</span> <span class="o">==</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)).</span><span class="nb">all</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>By setting up a threshold = 0, we obtain our original prediction with a precision rate of 84%. However, if we use another threshold, we can obtain a better precision but at the expense of worse recall.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_train_pred_90</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="mi">100000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred_90</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9000935891436593
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred_90</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.6411666666666667
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_precision_vs_recall</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">recalls</span><span class="p">,</span> <span class="n">precisions</span><span class="p">,</span> <span class="s">"b-"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Recall"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Precision"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_precision_vs_recall</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">'Threshold 10000'</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.641</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
+             <span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.641</span><span class="p">,</span> <span class="mf">0.641</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="s">"r--"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_52_0.png" alt="png" /></p>
+
+<h3 id="roc-curves">ROC Curves</h3>
+
+<p>The receiver operating characteristic (ROC) curve is commonly used for classification tasks too. Unlike the precision-recall curve, the ROC curve plots the TPR: True Positive Rate (Recall) against the FPR: False Positive Rate. The FPR is defined as the ratio of negative instances that are missclassified as positives. The FPR is equal to one minus the TNR: True Negative Rate also known as Specifity.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
+<span class="c1"># TPR: True Positive Rate
+# FPR: False Positive Rate
+</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_roc_curve</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">'k--'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'False Positive Rate'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'True Positive Rate'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_55_0.png" alt="png" /></p>
+
+<p>The area under curve is commonly used to compare different models. An area closer to one is better.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9708191851851852
+</code></pre></div></div>
+
+<p>Let’s train another model and then compare it to our previous model.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="n">forest_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">y_probas_forest</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">forest_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                                    <span class="n">method</span><span class="o">=</span><span class="s">"predict_proba"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_scores_forest</span> <span class="o">=</span> <span class="n">y_probas_forest</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># score = proba of positive class
+</span><span class="n">fpr_forest</span><span class="p">,</span> <span class="n">tpr_forest</span><span class="p">,</span> <span class="n">thresholds_forest</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span>
+    <span class="n">y_train_dress</span><span class="p">,</span><span class="n">y_scores_forest</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="s">"b:"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"SGD"</span><span class="p">)</span>
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">fpr_forest</span><span class="p">,</span> <span class="n">tpr_forest</span><span class="p">,</span> <span class="s">"Random Forest"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">"lower right"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_61_0.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_scores_forest</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9857603503086421
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_train_pred_forest</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">forest_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_dress</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">precision_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred_forest</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9294515103338633
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">recall_score</span><span class="p">(</span><span class="n">y_train_dress</span><span class="p">,</span> <span class="n">y_train_pred_forest</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7795
+</code></pre></div></div>
+
+<h3 id="multiclass-classification">Multiclass classification</h3>
+
+<p>In this section, we introduce multiclass classifiers in order to predict one of the ten classes of our dataset. Recall our 10 classes:</p>
+
+<p>0 T-shirt/top</p>
+
+<p>1 Trouser</p>
+
+<p>2 Pullover</p>
+
+<p>3 Dress</p>
+
+<p>4 Coat</p>
+
+<p>5 Sandal</p>
+
+<p>6 Shirt</p>
+
+<p>7 Sneaker</p>
+
+<p>8 Bag</p>
+
+<p>9 Ankle boot</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Fir the SGDClassifier with our "y" containing 10 classes
+</span><span class="n">sgd_clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">sgd_clf</span><span class="p">.</span><span class="n">predict</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3], dtype=int8)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Obtain the scores for our selected item
+</span><span class="n">item_scores</span> <span class="o">=</span> <span class="n">sgd_clf</span><span class="p">.</span><span class="n">decision_function</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+<span class="n">item_scores</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ -567587.25968507,  -396720.40311972,  -798576.1395802 ,
+          373576.68954112,  -636013.02740982, -2174210.81529276,
+         -481888.83230268, -1360399.01950886,  -889621.21801326,
+         -880520.24583804]])
+</code></pre></div></div>
+
+<p>See that our fitted model yields scores as an vector 1 x 10. Since our item is represented by label number 3, the index 3 of the scores yields the highest value.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">item_scores</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sgd_clf</span><span class="p">.</span><span class="n">classes_</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=int8)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sgd_clf</span><span class="p">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<p>By Default, the SGDClassifier takes advantage of the OneVsAll strategy in order to obtain a multiclass classification from a binary classification. However, we can use the OneVsOne strategy for this specific classifier. When we do that, a total of 45 = (10)(10 -1)/2 will be trained.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <span class="n">OneVsOneClassifier</span>
+<span class="n">ovo_clf</span> <span class="o">=</span> <span class="n">OneVsOneClassifier</span><span class="p">(</span><span class="n">SGDClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tol</span><span class="o">=-</span><span class="n">np</span><span class="p">.</span><span class="n">infty</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ovo_clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">ovo_clf</span><span class="p">.</span><span class="n">predict</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3], dtype=int8)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">len</span><span class="p">(</span><span class="n">ovo_clf</span><span class="p">.</span><span class="n">estimators_</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>45
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">forest_clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">forest_clf</span><span class="p">.</span><span class="n">predict</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>  <span class="c1"># or item.reshape(1, -1)
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([3], dtype=int8)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">forest_clf</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0., 0., 0., 1., 0., 0., 0., 0., 0., 0.]])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cross_val_score</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">"accuracy"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.781  , 0.74295, 0.7822 ])
+</code></pre></div></div>
+
+<p>The accuracy of our trained model can be improved by applying standar scaling to the the data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">float64</span><span class="p">))</span>
+<span class="n">cross_val_score</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s">"accuracy"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.82845, 0.8244 , 0.8343 ])
+</code></pre></div></div>
+
+<h3 id="error-analysis">Error Analysis</h3>
+
+<p>Like the confusion matrix used in a binary classificatin task, we can obtain and plot a confusion matrix for a multiclass classification.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_train_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">sgd_clf</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">conf_mx</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">)</span>
+<span class="n">conf_mx</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[4998,   10,  128,  401,   20,    2,  339,    0,  102,    0],
+       [  12, 5715,   53,  173,   13,    1,   30,    0,    3,    0],
+       [  47,    4, 4640,  112,  743,    1,  362,    1,   89,    1],
+       [ 270,   81,   98, 5245,  178,    0,  110,    0,   17,    1],
+       [  17,    4, 1066,  397, 4104,    1,  378,    1,   31,    1],
+       [   5,    1,    2,    7,    0, 5636,    6,  162,   57,  124],
+       [1014,   19,  929,  400,  606,    0, 2826,    3,  202,    1],
+       [   0,    0,    0,    0,    0,  467,    1, 5288,   15,  229],
+       [  39,    2,   38,  120,   31,   18,   70,   33, 5642,    7],
+       [   0,    3,    0,    4,    0,  125,    1,  214,    4, 5649]],
+      dtype=int64)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="p">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">conf_mx</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_84_0.png" alt="png" /></p>
+
+<p>Thi intensity on the diagonal gives us an idea of the accuracy, while the intensity on other squares gives us an idea of missclassification. In order to pay attention to missclassifications we can normalize those values and set the diagonal to zero.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row_sums</span> <span class="o">=</span> <span class="n">conf_mx</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">norm_conf_mx</span> <span class="o">=</span> <span class="n">conf_mx</span> <span class="o">/</span> <span class="n">row_sums</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># *** Document fill_diagonal
+</span><span class="n">np</span><span class="p">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">norm_conf_mx</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">norm_conf_mx</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_87_0.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cl_a</span><span class="p">,</span> <span class="n">cl_b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span>
+<span class="c1"># 4 Coat
+# 2 Pullover
+</span><span class="n">X_aa</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">cl_a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train_pred</span> <span class="o">==</span> <span class="n">cl_a</span><span class="p">)]</span>
+<span class="n">X_ab</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">cl_a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train_pred</span> <span class="o">==</span> <span class="n">cl_b</span><span class="p">)]</span>
+<span class="n">X_ba</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">cl_b</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train_pred</span> <span class="o">==</span> <span class="n">cl_a</span><span class="p">)]</span>
+<span class="n">X_bb</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">cl_b</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train_pred</span> <span class="o">==</span> <span class="n">cl_b</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">);</span> <span class="n">plot_items</span><span class="p">(</span><span class="n">X_aa</span><span class="p">[:</span><span class="mi">25</span><span class="p">],</span> <span class="n">images_per_row</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">);</span> <span class="n">plot_items</span><span class="p">(</span><span class="n">X_ab</span><span class="p">[:</span><span class="mi">25</span><span class="p">],</span> <span class="n">images_per_row</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">);</span> <span class="n">plot_items</span><span class="p">(</span><span class="n">X_ba</span><span class="p">[:</span><span class="mi">25</span><span class="p">],</span> <span class="n">images_per_row</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">);</span> <span class="n">plot_items</span><span class="p">(</span><span class="n">X_bb</span><span class="p">[:</span><span class="mi">25</span><span class="p">],</span> <span class="n">images_per_row</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2019-02-27-classification-task/output_88_0.png" alt="png" /></p>
+
+<h3 id="multilabel-classification">Multilabel Classification</h3>
+
+<p>Mutilabel classification consists of assigning more than one label to a specific instance. To put this into practice, let’s create two labels for each specific instance, Men (M), Women(W).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="c1"># - 0 T-shirt/top -&gt; W/M
+# - 1 Trouser -&gt; W/M
+# - 2 Pullover -&gt; W/M
+# - 3 Dress -&gt; W
+# - 4 Coat -&gt; W/M
+# - 5 Sandal -&gt; W/M
+# - 6 Shirt -&gt; M
+# - 7 Sneaker -&gt; W/M
+# - 8 Bag -&gt; 
+# - 9 Ankle boot -&gt; W
+</span>
+<span class="n">y_train_w</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="n">y_train_m</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">isin</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">y_multilabel</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">c_</span><span class="p">[</span><span class="n">y_train_w</span><span class="p">,</span> <span class="n">y_train_m</span><span class="p">]</span>
+
+<span class="n">knn_clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">knn_clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_multilabel</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
+           metric_params=None, n_jobs=None, n_neighbors=5, p=2,
+           weights='uniform')
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Recall that our item is a dress
+</span><span class="n">knn_clf</span><span class="p">.</span><span class="n">predict</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ True, False]])
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_train_knn_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">knn_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_multilabel</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">f1_score</span><span class="p">(</span><span class="n">y_multilabel</span><span class="p">,</span> <span class="n">y_train_knn_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s">"macro"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.9612839736578104
+</code></pre></div></div>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li>Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems</li>
+</ul>
+
+:ET

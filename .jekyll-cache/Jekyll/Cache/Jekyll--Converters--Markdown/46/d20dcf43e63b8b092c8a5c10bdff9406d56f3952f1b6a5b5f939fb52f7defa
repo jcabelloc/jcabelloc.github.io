@@ -1,0 +1,42 @@
+I"^
+<p><img src="/assets/2019-09-23-Tres-pautas-innovacion-tecnologica/pexels-photo-1496191.jpeg" alt="imagen intro" /></p>
+
+<h2 id="introducción">Introducción</h2>
+
+<h2 id="programas">Programas</h2>
+<p>Una expectativa usual cuando uno realiza un cambio de equipo, es que los programas que uno usa, existan, funcionen y que no implique costos adicionales. Esto es justamente lo que consegui. Aqui una lista de los programas que instale y estrese en este corto tiempo, teniendo solo sorpresas positivas.</p>
+<ul>
+  <li><strong>Programas de desarrollo de Software</strong>. Java, Spring Tool Suite, Eclipse, Atom, Postman, Android Studio, XCode, VS Code, MySQL Workbench, Docker, Git….</li>
+  <li><strong>Utilitarios</strong>. Chrome, Anydesk, Slack, Google Drive Stream, Adobe reader…</li>
+</ul>
+
+<p>Aun no instalo Microsoft Office, dado que soy un usuario intensivo de G Suite, sin embargo es bastante conocida su compatibilidad.</p>
+
+<h2 id="mas-que-solo-ventanas">Mas que solo ventanas</h2>
+<p>El hecho de que Mac este basado en un sistema Unix(BSD) lo dota de ventajas importantes a la hora de interactuar con este.</p>
+<ul>
+  <li><strong>Linea de comandos</strong>. Basada en ZSH (Antes Bash), es una estupenda herramienta para instruir y automatizar en Mac. Se encuentra mucha documentacion para realizar una tarea u otra, por lo que se gana mas confiabilidad en las acciones que uno realiza.</li>
+  <li><strong>Similitud de comandos</strong>. Es una enorme ventaja que las instrucciones tengan una similitud importante a Linux. Es decir, el conocimiento previo de comandos en Unix/Linux ha sido completamente migrable hasta ahora.</li>
+</ul>
+
+<h2 id="el-proceso-de-puesta-en-marcha">El proceso de puesta en marcha</h2>
+<p>Sin duda, el proceso de poner en marcha los programas que vamos a usar, es uno de las cosas que me han agradado. HomeBrew, un manejador de dependencias y programas, es de hecho lo primero que uno debe instalar, para luego pasar a disfrutar sus beneficios. Usando HomeBrew uno logra:</p>
+<ul>
+  <li><strong>Sencillez</strong>. Los programas se instalan con solo una instruccion de comando. Homebrew se encarga del resto, de resolver las dependencias y dar pautas acertadas en caso hayan colisiones con programas ya instalados.</li>
+  <li><strong>Visibilidad</strong>. Esto permite reaccionar a eventos posteriores de personalizacion, actualizacion o desinstalacion. Por lo tanto tenemos un proceso gestionable.</li>
+</ul>
+
+<h2 id="desempeńo">Desempeńo</h2>
+
+<ul>
+  <li>Comparacion con Thinkpad …</li>
+  <li>Uso de recursos</li>
+</ul>
+
+<h2 id="desafios">Desafios</h2>
+<ul>
+  <li>Shortcuts</li>
+  <li>Costumbre</li>
+</ul>
+
+:ET

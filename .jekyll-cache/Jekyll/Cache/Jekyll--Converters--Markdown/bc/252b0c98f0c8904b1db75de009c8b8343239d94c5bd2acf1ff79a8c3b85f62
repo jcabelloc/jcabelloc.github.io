@@ -1,0 +1,129 @@
+I"*
+<h3>jekyll</h3>
+<ul>
+    
+      <li>
+        <a href="/jekyll/2018/12/19/welcome-to-jekyll.html">Welcome to Jekyll!</a>
+        <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+      </li>
+    
+  </ul>
+
+<h3>Tools</h3>
+<ul>
+    
+      <li>
+        <a href="/tools/2019/01/21/octave-getting-started.html">Getting Started with octave</a>
+        <p>A brief introduction to Octave, a numerical tool that makes math much easier.</p>
+
+      </li>
+    
+  </ul>
+
+<h3>Python</h3>
+<ul>
+    
+      <li>
+        <a href="/python/2019/01/27/matplotlib-intro.html">Introduction to Matplotlib</a>
+        <p>A brief introduction to Matplotlib</p>
+
+      </li>
+    
+      <li>
+        <a href="/python/2019/01/27/pandas-intro.html">Introduction to Pandas</a>
+        <p>A brief introduction to pandas</p>
+
+      </li>
+    
+      <li>
+        <a href="/python/2019/01/26/numpy-intro.html">Introduction to NumPy</a>
+        <p>A brief introduction to NumPy</p>
+
+      </li>
+    
+      <li>
+        <a href="/python/2019/01/24/python3-getting-started.html">Getting Started with Python 3</a>
+        <p>This is a brief introduction to Python 3, a scripting language widely used in data science and machine learning.</p>
+
+      </li>
+    
+  </ul>
+
+<h3>Machine Learning</h3>
+<ul>
+    
+      <li>
+        <a href="/machine%20learning/2019/07/19/como-iniciarse-en-machine-learning.html">Como iniciarse en Machine Learning</a>
+        <p><img src="/assets/2019-07-19-como-iniciarse-en-machine-learning/img_01.jpg" alt="png" /></p>
+
+      </li>
+    
+      <li>
+        <a href="/machine%20learning/2019/04/07/linear-svm.html">Linear Support Vector Machine Classiffier</a>
+        <p>This notebook ilustrates how to use linear support vector machine for a binary classification task. We will be using the “wine” dataset provided by the Scikit-learn library.</p>
+
+      </li>
+    
+      <li>
+        <a href="/machine%20learning/2019/04/03/logistic-regression.html">Logistic Regression</a>
+        <p>This notebook helps us to introduce how to train a Logistic Regression model for binary classificacion and multiclass classification.  We will use the “wine” dataset provided by the Scikit-learn library.</p>
+
+      </li>
+    
+      <li>
+        <a href="/machine%20learning/2019/03/23/learning-curves.html">Learning Curves</a>
+        <p>In this notebook, we will show how learning curves behaves as a function of the training set size for models with high bias and high variance.</p>
+
+      </li>
+    
+      <li>
+        <a href="/machine%20learning/2019/03/21/training-linear-regression.html">Training Linear Regression Models</a>
+        <p>In this notebook, we will review some techniques for training a linear regression model.</p>
+
+      </li>
+    
+      <li>
+        <a href="/machine%20learning/2019/02/27/classification-task.html">Classification task</a>
+        <p>This notebook contains steps and code to get started with classification tasks. We wil be using the Fashin-MNIST dataset, an alternative dataset to the well-known MNIST dataset</p>
+
+      </li>
+    
+      <li>
+        <a href="/machine%20learning/2019/02/22/common-steps-machine-learning-project.html">Common Steps on a Machine Learning Project</a>
+        <p>A sequence of common steps when working with a machine learning project</p>
+
+      </li>
+    
+      <li>
+        <a href="/machine%20learning/2019/02/13/linear-regression-intro.html">Introduction to Linear Regression With Python</a>
+        <p>Using the Auto dataset</p>
+
+      </li>
+    
+  </ul>
+
+<h3>Arquitectura de Software</h3>
+<ul>
+    
+      <li>
+        <a href="/arquitectura%20de%20software/2019/09/23/Tres-pautas-innovacion-tecnologica.html">Tres pautas para lograr mayor innovación tecnológica</a>
+        <p><img src="/assets/2019-09-23-Tres-pautas-innovacion-tecnologica/pexels-photo-1496191.jpeg" alt="imagen intro" /></p>
+
+      </li>
+    
+      <li>
+        <a href="/arquitectura%20de%20software/2019/08/22/introduccion-microservicios.html">Introducción a Microservicios</a>
+        <p><img src="/assets/2019-08-23-introduccion-microservicios/art-artificial-intelligence-blackboard-355948.jpg" alt="imagen intro" /></p>
+
+      </li>
+    
+      <li>
+        <a href="/arquitectura%20de%20software/2019/08/06/porque-solucion-integracion-aplicaciones.html">Porque una solución de Integración de Aplicaciones Empresariales</a>
+        <p><img src="/assets/2019-08-06-porque-solucion-integracion-aplicaciones/alina-grubnyak-ZiQkhI7417A-unsplash.jpg" alt="imagen intro" /></p>
+
+      </li>
+    
+  </ul>
+
+:ET

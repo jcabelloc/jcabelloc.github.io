@@ -1,0 +1,128 @@
+I"�$<p><img src="/assets/2019-08-23-introduccion-microservicios/art-artificial-intelligence-blackboard-355948.jpg" alt="imagen intro" /></p>
+
+<h2 id="introducción">Introducción</h2>
+<p>Este articulo pretende ayudarnos a comprender la Arquitectura de Microservicios aplicadas al desarrollo de aplicaciones empresariales. Veremos que fuerzas motivaron su surgimiento, así como que patrones e implementaciones existen hoy.</p>
+
+<h2 id="que-son-los-microservicios">Que son los microservicios</h2>
+
+<p>Microservicios es un “nuevo” paradigma a la hora de definir la arquitectura de una aplicación de software. Esto es, existen nuevas prácticas y patrones de arquitectura a la hora de descomponer una aplicación empresarial en “pequeños” servicios. Adoptando microservicios uno logra tener servicios de software que:</p>
+
+<ul>
+  <li>Esten <strong>distribuidos</strong>, logrando que su operación en conjunto cubra las funciones de una aplicación completa.</li>
+  <li>Presenten <strong>bajo acomplamiento</strong>, usando protocolos no propietarios como REST y encapsulando su implementación. Entonces la tecnología subyacente de cada servicio es irrelevante.</li>
+  <li>Tengan <strong>limitada responsabilidad</strong>, ejecutando solo un pequeño numero de tareas definidas.</li>
+</ul>
+
+<p>Como se puede apreciar en el diagrama siguiente, una aplicación ficticia ha sido descompuesta en tres servicios. El servicio de cuentas, el servicio de inventarios y el servicio de entrega. Cada servicio se aloja típicamente en un servidor distinto y cada uno de ellos tiene su propio almacenamiento de datos. En una aplicación con arquitectura tradicional, también llamada monolítica, estos servicios junto a otros serían los módulos o paquetes, todos integrados en un solo sistema</p>
+
+<p><img src="/assets/2019-08-23-introduccion-microservicios/microservice_architecture.png" alt="arquitectura de microservicios" /></p>
+
+<p>Imagen tomada de: <a href="https://microservices.io/patterns/microservices.html">microservicios.io</a></p>
+
+<h2 id="porque-cambiar">Porque cambiar?</h2>
+<p>En la era de Internet, donde los clientes valoran la inmediatez, la experiencia digital y una constante mejora en los servicios que reciben, los negocios esperan de sus organizaciones:</p>
+<ul>
+  <li>Que se acabe con la complejidad que limita evolucionar su diferencia competitiva.</li>
+  <li>Respuestas más rápidas al cliente</li>
+  <li>Disponibilidad continua de sus servicios</li>
+  <li>Capacidad de escalabilidad ante demandas inesperadas</li>
+</ul>
+
+<p>Sin embargo, la forma en que se han venido construyendo las aplicaciones de software que soportan el negocio presentan síntomas que limitan las nuevas fuerzas al hacer negocios. Ver diagrama siguiente:
+<img src="/assets/2019-08-23-introduccion-microservicios/sistema_monolitico.png" alt="sistema monolitico" /></p>
+
+<h2 id="consideraciones-claves-para-adoptar-microservicios">Consideraciones claves para adoptar microservicios</h2>
+<p>Adoptando una arquitectura de microservicios genera los siguientes beneficios</p>
+<ul>
+  <li>Los equipos de desarrollo de software llegan a ser más productivos</li>
+  <li>La aplicación en su conjunto se forma por servicios más simples y fáciles de mantener.</li>
+  <li>Se puede responder al cambio con mayor facilidad y flexibilidad</li>
+  <li>Los cambios se introducen en forma continua</li>
+</ul>
+
+<p>Sin embargo, para cosechar estos beneficios es importante considerar aspectos claves a la hora de adoptar microservicios:</p>
+<ul>
+  <li>Servicios de <strong>tamaño adecuado</strong>. Esto es, cada servicio debe cumplir bien una sola responsabilidad. Un servicio con muchas responsabilidades hace compleja su mantenibilidad.</li>
+  <li>Servicios con <strong>independencia de la infraestructura</strong>. Esto es, los servicios deben poder alojarse en cualquier ubicación física y deben poder escalar (up/down) en forma transparente.</li>
+  <li>Entornos <strong>preparados ante fallos</strong>. Esto es, ante un problema con un servicio, los clientes de los servicios deben tener rutas alternativas definidas.</li>
+  <li>Servicios <strong>repetibles</strong>. Esto es, cada vez que una nueva instancia de un servicio se activa, se basa en el mismo código y configuración.</li>
+</ul>
+
+<h2 id="los-patrones-de-diseño">Los patrones de diseño</h2>
+<p>Como es sabido, la recurrencia para resolver un problema usando software, genera un patrón de diseño. La adopción constante de una arquitectura de microservicios nos ha dejado al día de hoy de patrones de diseño bastantes definidos a la hora de adoptar microservicios. Estos son:</p>
+
+<ol>
+  <li><strong>Patrones de construccion core</strong>. Estos patrones nos ayudan a:
+    <ul>
+      <li>Establecer el adecuado tamaño y responsabilidad de cada uno de los servicios.</li>
+      <li>Definir los protocolos de comunicación de los servicios</li>
+      <li>Establecer los mecanismos para gestionar la configuración de los servicios.</li>
+    </ul>
+  </li>
+  <li><strong>Patrones de Enrutamiento</strong>. Estos patrones nos ayudan a:
+    <ul>
+      <li>Abstraer la ubicación física de red del servicio a la hora de ser consumido.</li>
+      <li>Proveer un solo punto de acceso hacia los servicios.</li>
+    </ul>
+  </li>
+  <li><strong>Patrones de Tolerancia a fallos</strong>. Estos patrones nos ayudan a:
+    <ul>
+      <li>Balancear la carga cuando se realizan las llamadas desde los clientes.</li>
+      <li>Evitar que clientes hagan llamadas a servicios que presentan fallas.</li>
+      <li>Proveer respuestas alternativas antes servicios que presentan fallas.</li>
+    </ul>
+  </li>
+  <li><strong>Patrones de Seguridad</strong>. Estos patrones nos ayudan a:
+    <ul>
+      <li>Gestionar la autenticación y autorización  al llamar a servicios protegidos.</li>
+      <li>Gestionar y propagar los tokens de acceso obtenidos.</li>
+    </ul>
+  </li>
+  <li><strong>Patrones de trazabilidad y logging</strong>. Estos patrones nos ayudan a:
+    <ul>
+      <li>Correlacionar los “logs” producidos por los diferentes servicios.</li>
+      <li>Agrupar los logs para una mejor trazabilidad.</li>
+      <li>Visualizar la trazabilidad de los eventos en forma integrada.</li>
+    </ul>
+  </li>
+  <li><strong>Patrones de despliegue</strong>. Nos ayudan a:
+    <ul>
+      <li>Definir procesos de construcción y despliegue continuo.</li>
+      <li>Tratar las configuraciones de infraestructura tecnológica como código.</li>
+      <li>Generar contenedores de los servicios que son inmutables a cambios cada vez que se despliegan.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="tecnologia-existente">Tecnologia existente</h2>
+
+<p>Los patrones son el marco de especificación que necesita estar soportado en alguna implementación. En la actualidad existen diversas implementaciones de los patrones indicados, muchos de ellos inclusive antes de la existencia de arquitectura de microservicios. En el entorno Java, <strong>Spring Boot</strong> y <strong>Spring Cloud</strong> vienen siendo usado con mucho éxito al momento de implementar una arquitectura de microservicios.</p>
+
+<ul>
+  <li><strong>Spring Boot</strong> hace que el proceso que construcción y configuración de servicios REST sea una labor más simple,</li>
+  <li><strong>Spring Cloud</strong> integra una colección de tecnologías open source de compañías como Netflix y HashiCorp que simplifican la gestión de los servicios en el enfoque de microservicios.</li>
+</ul>
+
+<p>En el siguiente diagrama presentamos la pila tecnológica en el entorno Java y Spring Framework.<br />
+<img src="/assets/2019-08-23-introduccion-microservicios/tecnologia_microservicios.png" alt="tecnologias de microservicios" /></p>
+
+<h2 id="cuando-no-adoptar-microservicios">Cuando no adoptar microservicios</h2>
+
+<p>A pesar de los grandes beneficios que trae la adopción de una arquitectura de microservicios, su adopción no es recomendable en los siguientes escenarios.</p>
+<ul>
+  <li>La <strong>aplicación</strong> de software es <strong>departamental</strong>. Esto es, descomponer sus funciones no justifica el esfuerzo.</li>
+  <li><strong>No se invierte</strong> en los procesos y herramientas que <strong>automatizan y monitorean</strong> la gestión de dependencias, la compilación, las pruebas, la entrega y el despliegue del software.</li>
+  <li>La aplicación de software soporta procesos funcionales: <strong>maduros</strong>, de <strong>baja necesidad de cambios</strong> y de <strong>baja necesidad de escalamiento</strong>. Por ejemplo, un módulo contable.</li>
+  <li>La aplicación de software requiere de <strong>agregar o transformar</strong> data involucrando <strong>muchas fuentes de datos</strong>. Por ejemplo, un tablero de control empresarial.</li>
+</ul>
+
+<h2 id="conclusiones">Conclusiones</h2>
+<p>Los microservicios nos ofrecen una alternativa de arquitectura de software a la hora de implementar aplicaciones empresariales. Su adopción requiere de introducir nuevas prácticas, procesos y herramientas que ayuden a incrementar el éxito de su implementación.</p>
+
+<h2 id="referencias">Referencias</h2>
+<ul>
+  <li><a href="https://microservices.io/">Microservice Arquitecture</a></li>
+  <li><a href="https://www.manning.com/books/spring-microservices-in-action">Spring Microservices in Action</a></li>
+  <li><a href="https://www.oreilly.com/library/view/building-microservices/9781491950340/">Building Microservices</a></li>
+</ul>
+:ET

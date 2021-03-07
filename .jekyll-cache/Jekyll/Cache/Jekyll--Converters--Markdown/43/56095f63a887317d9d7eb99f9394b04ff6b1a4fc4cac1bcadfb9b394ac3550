@@ -1,0 +1,52 @@
+I"(<p><img src="/assets/2019-07-19-como-iniciarse-en-machine-learning/img_01.jpg" alt="png" /></p>
+
+<h2 id="porque-este-articulo">Porque este articulo</h2>
+<p>Hace poco mas de un año cuando me inicie en el campo de Machine Learning, me hubiese gustado encontrar pautas para hacer que dicho proceso de aprendizaje sea mas efectivo. Luego de invertir importantes recursos(economicos y de tiempo), comparto estas lineas con la finalidad que nuevos interesados en Machine Learning se inicien de forma mas practica, digamos en un periodo de tres a cuatro meses.</p>
+
+<h2 id="vision-en-mente">Vision en mente</h2>
+<p>Para mantenerse enfocado sugiero fijar y escribir una vision de lo que se espera lograr al termino de este periodo. Para establecer una vision motivadora, tenemos que tener una nocion de que trata machine learning y que aplicaciones practicas ha logrado. Bueno,  Machine Learning no es mas que la identificacion de patrones, usando muchos datos y algoritmos avanzados, para poder modelar el comportamiento futuro. Ejemplos, de aplicaciones de machine learning, serian:</p>
+<ul>
+  <li>Predecir si un potencial cliente terminaria pagando su credito solicitado a una entidad financiera.</li>
+  <li>Mejorar las ventas mediante un sistema de recomendacion de productos en una tienda online.</li>
+  <li>Identificar la actitud del consumidor a la marca basado en los datos de las redes sociales.</li>
+</ul>
+
+<p>Para establecer la vision ten en cuenta lo siguiente:</p>
+<ul>
+  <li>De preferencia elige un campo de accion que te es familiar, sea que trabajes alli o te apasione.</li>
+  <li>Debes tener acceso a datos, en el campo de accion que elijas.</li>
+  <li>Debe ser acotada y especifica. No pienses en algo sofisticado o complejo.</li>
+</ul>
+
+<h2 id="requisitos">Requisitos</h2>
+<p>Aun cuando muchos podemos lograr tener un entendimiento general de machine learning, la aplicacion practica de machine learning para solucionar problemas requiere de ciertos requisitos.</p>
+<ul>
+  <li><strong>Tiempo!</strong>. De 6 a 8 horas semanales, con una dedicacion de alrededor 2.5 horas en cada sesion.</li>
+  <li><strong>Matematica</strong>. Conocimiento de algebra lineal <a href="https://es.wikipedia.org/wiki/%C3%81lgebra_lineal">Algebra Lineal - Wikipedia</a>. Nocion de calculo diferencial (opcional).</li>
+  <li><strong>Programacion basica</strong>. No importa el lenguaje, sino la nocion de que es y como se elabora un programa.</li>
+</ul>
+
+<h2 id="curso-on-line">Curso on-line</h2>
+<p>De los cientos de cursos disponibles, el curso de <strong>Andrew Ng</strong> de Stanford University <a href="https://www.coursera.org/learn/machine-learning">Machine Learning - Coursera</a> es uno de los mejores. El curso es de rigurosidad media. El autor explica muy bien los conceptos y tiene aplicaciones concretas durante el curso. Tambien aprenderas la terminologia de machine learning para que posteriormente expandas tu conocimiento. El curso esta en Ingles, pero tiene subtitulos en español.
+    <br /><br />
+    <a href="https://www.coursera.org/learn/machine-learning" target="_blank"> 
+        <img src="/assets/2019-07-19-como-iniciarse-en-machine-learning/img_02.png" style="  display: block;   margin-left: auto;   margin-right: auto; width: 40%;" alt="Machine Learning - Coursera" width="200" />
+    </a></p>
+
+<h2 id="bibliografia">Bibliografia</h2>
+<p>La referencia bibliografica es muy extensa, pero para iniciar, un libro que sugiero tener a la mano es: <a href="http://faculty.marshall.usc.edu/gareth-james/">Introduction to Statistical Learning</a>. Este libro explica muy bien la parte conceptual de cada modelo en machine learning. Tambien provee casos y refiere fuentes de datos que ayudaran a comprender mejor la aplicacion practica de machine learning. El libro lo puedes descargar gratis de su website. 
+    <br /><br />
+    <a href="http://faculty.marshall.usc.edu/gareth-james/" target="_blank"> 
+        <img src="/assets/2019-07-19-como-iniciarse-en-machine-learning/img_03.jpg" style="  display: block;   margin-left: auto;   margin-right: auto; width: 20%;" alt="Libro Intro to Statistical Learning" width="200" />
+    </a></p>
+
+<h2 id="otros-recursos">Otros recursos</h2>
+<p>Podria proveer una lista muy amplia de cursos, libros, papers, video tutoriales, blogs, articulos, etc. Sin embargo, esto ha estado y estara alli cuando termines este periodo de tu iniciacion en machine learning. Lo importante es que te mantengas enfocado en este periodo. Con tanta informacion es muy facil perder el enfoque. Machine Learning es un campo muy bien definido al dia de hoy, entonces todos los recursos de aprendizaje comparten la misma fuente de conocimiento base, lo que puede variar es como enfocan su aplicacion o que software usan para una implementacion practica.</p>
+
+<h2 id="aplicacion-practica">Aplicacion practica</h2>
+<p>Una vez que concluyas con este periodo de iniciacion, implementa la aplicacion practica que visionaste al inicio. Seguro para dicha implementacion, tendras aun algunas brechas de conocimiento, pero no seran mas que brechas que rapidamente podras resolverlas usando recursos on-line. Si en el periodo de aprendizaje, obtuviste nuevas luces que te hicieron reconsiderar o reformular tu vision inicial, ajustala, pero mantente aferrada a una sola vision. La implementacion de una aplicacion practica solidifica tu dominio en el tema.</p>
+
+<h2 id="reflexiones-finales">Reflexiones finales</h2>
+<p>Invertir tu tiempo libre tres o cuatro meses, no solo require auto motivacion sino disciplina. Luego de este periodo no seras un experto en machine learning, pero tendras la base de conocimiento y una aplicacion concreta en tus manos. Luego de este proceso puedes moverte en varias direcciones. Puedes pensar en una aplicacion mas retadora e investigar de que informacion previa existe al respecto. O puedes moverte hacia otro campo relacionado a machine learning, como deep learning.</p>
+
+:ET
