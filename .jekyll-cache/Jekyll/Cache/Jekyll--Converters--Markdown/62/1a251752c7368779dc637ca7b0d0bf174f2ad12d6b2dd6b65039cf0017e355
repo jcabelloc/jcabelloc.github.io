@@ -1,0 +1,80 @@
+I"�<p><img src="/assets/2021-03-08-cinco-productos-google-cloud/google-cloud.png" alt="imagen intro" /></p>
+
+<h2 id="introducción">Introducción</h2>
+
+<p>Según estadísticas recientes, <a href="https://hostingtribunal.com/blog/cloud-adoption-statistics/#gref">Cloud Adoption Statistics for 2021</a>, el <strong>94% de empresas</strong> ya usa servicios Cloud y <strong>30% de todo el presupuesto</strong> de TI son destinados para servicios cloud. Esto es, los servicios cloud vinieron a quedarse y por ello la razón de este artículo que pretende ayudar a conocer algunos productos cloud para el viaje empresarial hacia la nube.</p>
+
+<p>Solo <strong>Google Cloud</strong> tienen cientos de productos, si a esto le sumamos los otros proveedores existentes como <strong>AWS</strong> o <strong>Azure</strong>, la lista es interminable. Por lo tanto, este artículo no pretende ser exhaustivo ni ahondar en cada uno de los productos, sino más bien vincular algunos productos específicos y ver su contexto de uso.</p>
+
+<h2 id="1-firebase">1. Firebase</h2>
+<p>Es una plataforma gestionada que permite construir e implementar soluciones web y móviles de forma rápida sin sacrificar versatilidad. Algunas de las funcionalidades que ofrece esta plataforma son:</p>
+<ul>
+  <li><strong>Base de datos</strong></li>
+  <li><strong>Seguridad y Autenticacion</strong> de usuarios</li>
+  <li><strong>Almacenamiento</strong> de todo tipo de archivos</li>
+  <li><strong>Alojamiento web</strong> de la aplicaciones</li>
+  <li><strong>Mensajería</strong> y notificaciones</li>
+  <li><strong>Analitica</strong> de datos</li>
+  <li>Integracion de <strong>APIs de Machine Learning</strong></li>
+</ul>
+
+<p><img src="/assets/2021-03-08-cinco-productos-google-cloud/firebase2.png" alt="Firebase" /></p>
+
+<p>Imagen tomada de: <a href="https://www.googblogs.com/hamilton-app-takes-the-stage/">googblogs.com</a></p>
+
+<p>Si se trata de habilitar un nuevo <strong>canal digital</strong> para la empresa o iniciando un <strong>emprendimiento basado en tecnología</strong> esta es una solución ideal porque permite enfocarse en el producto o servicio a construir con cero inversión en la plataforma y con un esquema de pagar por lo que se usa.</p>
+
+<h2 id="2-app-engine">2. App Engine</h2>
+<p>Es un motor de aplicaciones para entornos modernos muy utilizado cuando necesitamos tener mayor control en las reglas del software que queremos construir o implementar. Algunas de las siguientes funcionalidades que ofrece App Engine son;</p>
+<ul>
+  <li>Soporta las <strong>tecnologías líderes</strong> de software (Java, NodeJS, Python, etc)</li>
+  <li>Es <strong>elástica</strong> ante mayores o menores demandas de carga transaccional</li>
+  <li>Es <strong>gestionada</strong> y <strong>monitoreada</strong> por Google</li>
+  <li>Pagas por lo que usas</li>
+</ul>
+
+<p><img src="/assets/2021-03-08-cinco-productos-google-cloud/google_app_engine.png" alt="Google App Engine" /></p>
+
+<p>Imagen tomada de: <a href="https://www.cutehits.com/app-engine-in-google-cloud-platform-gcp/">CuteHits</a></p>
+
+<p>Si se quiere migrar a o implementar un <strong>sistema escalable y robusto</strong>, esta es una buena alternativa. Construir e implementar soluciones para usar App Engine generan <strong>baja dependencia</strong> con Google, esto es, con cambios mínimos uno puede pasar de usar esta plataforma o otro proveedor o una plataforma propia.</p>
+
+<h2 id="3-cloud-sql">3. Cloud SQL</h2>
+<p>Es un servicio de Base de Datos en la nube. El producto es <strong>gestionado y operado</strong> por Google. Entre sus principales caracteristicas se puede indicar:</p>
+<ul>
+  <li>Soporta los principales proveedores de BD: MySQL, PostgreSQL, MS SQL.</li>
+  <li>Al ser gestionado, nos permite enfocarnos en su uso y no en su gestión de instalación y configuración.</li>
+  <li>Soporta configuraciones básicas y sofisticadas con <strong>replicación y alta disponibilidad</strong>.</li>
+</ul>
+
+<p>Si a la par de migrar las aplicaciones se quiere contar con un servicio gestionado de base de datos en la nube, Cloud SQL es una excelente opción de base de datos para nuestras aplicaciones Cloud que se puede configurar en modo de red <strong>privada y pública</strong>.</p>
+
+<h2 id="4-cloud-storage">4. Cloud Storage</h2>
+<p>Es un producto gestionado por Google que nos permite <strong>almacenar archivos de cualquier tipo</strong>. Cuenta con un conjunto de APIs y librerías que permiten su integración a cualquier sistema o software de forma inmediata. Entre sus características tenemos:</p>
+<ul>
+  <li>Cuenta con <strong>diversas APIs</strong> para ser integrado desde cualquier aplicación.</li>
+  <li>Tiene diferentes opciones de configuración de <strong>seguridad de acceso</strong> al contenido</li>
+  <li>Tienes opciones de tipo de almacenamiento, de acceso rápido o acceso lento.</li>
+</ul>
+
+<p>Si en el <strong>proceso de negocio</strong> se recogen <strong>documentos</strong> como fotos, videos o documentos escaneados, Cloud Storage es una excelente solución para gestionar estos volúmenes importantes de información sin preocuparte en la infraestructura y con costo cero de inversión.</p>
+
+<h2 id="5-cloud-run">5. Cloud Run</h2>
+<p>Es un producto orientado a ejecutar casi <strong>cualquier aplicación en la nube</strong> sin tener que preocuparte de la infraestructura. Podríamos decir que es la evolución del App Engine, porque se puede obtener todas las funcionalidades de esta, pero además no nos limita a las opciones que nos ofrece App Engine. Sus características son:</p>
+<ul>
+  <li>Ejecuta <strong>cualquier aplicación</strong> que esté en contenedor Docker</li>
+  <li>Permite <strong>elasticidad</strong> de nuestra aplicación ante mayores o menores demandas</li>
+  <li>Obtenemos <strong>poco acoplamiento</strong> dado que nuestra aplicación está en contenedores podemos movernos a diferentes plataformas equivalentes</li>
+  <li>Pagamos por lo que usamos</li>
+</ul>
+
+<p><img src="/assets/2021-03-08-cinco-productos-google-cloud/cloud_run.png" alt="Cloud Run" /></p>
+
+<p>Imagen tomada de: <a href="https://cloud.google.com/run">Google Cloud Run</a></p>
+
+<p>Si el proceso de migración de tus aplicaciones a la nube es serio y de largo aliento, cloud run es una gran opción porque te permite tener el control de tu aplicación pero dejar la gestión de la infraestructura al proveedor cloud. Además tiene el beneficio de que pagas por lo que usas sin tener candados que limiten la migración en el futuro a otras opciones.</p>
+
+<h2 id="conclusiones">Conclusiones</h2>
+<p>Cada producto Cloud de los revisados tiene características que lo hacen sea más versátil dependiendo del contexto. Aun cuando estos productos revisados son de Google Cloud, estos mismos tienen sus equivalentes en AWS o Azure y que aplican a contextos similares a los descritos.</p>
+
+:ET
